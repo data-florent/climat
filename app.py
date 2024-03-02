@@ -20,8 +20,8 @@ st.sidebar.subheader("Sommaire")
 pages=["Présentation du projet", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("",pages)
 st.sidebar.info(
-"Auteurs du projet : "
-"[Laura](https://www.linkedin.com/), "
+"Auteurs du projet :"
+" [Laura](https://www.linkedin.com/), "
 "[Marion](https://www.linkedin.com/), "
 "[Florent](https://www.linkedin.com/), "
 "[Romain](https://www.linkedin.com/)"
