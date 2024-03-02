@@ -19,14 +19,17 @@ st.sidebar.title("Sommaire")
 pages=["Présentation du projet", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("",pages)
 st.sidebar.info(
-"Auteurs : "
-"\n"
+"Auteurs du projet :"
+"\n\n"
 "Laura "
-"[linkedIn](https://www.linkedin.com/), "
+"[linkedIn](https://www.linkedin.com/) "
+"\n\n"
 "Marion "
-"[linkedIn](https://www.linkedin.com/), "
+"[linkedIn](https://www.linkedin.com/) "
+"\n\n"
 "Florent "
 "[linkedIn](https://www.linkedin.com/)"
+"\n\n"
 "Romain "
 "[linkedIn](https://www.linkedin.com/)"
 "\n\n"
