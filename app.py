@@ -15,7 +15,7 @@ st.markdown(
 , unsafe_allow_html=True)
 
 ### Menu latéral et création des pages ###
-st.sidebar.title("Changement climatique & catastrophes naturelles")
+#st.sidebar.title("Changement climatique & catastrophes naturelles")
 st.sidebar.subheader("Sommaire") 
 pages=["Présentation du projet", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("",pages)
