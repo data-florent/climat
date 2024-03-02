@@ -17,7 +17,7 @@ st.markdown(
 ### Menu latéral et création des pages ###
 st.sidebar.title("Sommaire")
 pages=["Présentation du projet", "DataVizualization", "Modélisation"]
-page=st.sidebar.radio(pages)
+page=st.sidebar.radio("",pages)
 st.sidebar.info(
 "Auteurs : "
 "\n"
