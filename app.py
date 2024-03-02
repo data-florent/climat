@@ -21,7 +21,6 @@ pages=["Présentation du projet", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("",pages)
 st.sidebar.info(
 "Auteurs du projet :"
-"\n\n"
 "[Laura](https://www.linkedin.com/), "
 "[Marion](https://www.linkedin.com/), "
 "[Florent](https://www.linkedin.com/), "
