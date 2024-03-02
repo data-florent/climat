@@ -5,9 +5,6 @@ import streamlit as st
 
 df = "à définir"
 
-### Création des pages ###
-pages=["Présentation du projet", "DataVizualization", "Modélisation"]
-
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True, width=500)
 st.markdown(
@@ -17,8 +14,9 @@ st.markdown(
 "</h2>"
 , unsafe_allow_html=True)
 
-### Menu latéral ###
+### Menu latéral et création des pages ###
 st.sidebar.title("Sommaire")
+pages=["Présentation du projet", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio(pages)
 st.sidebar.info(
 "Auteurs : "
