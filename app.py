@@ -6,7 +6,7 @@ import streamlit as st
 df = "à définir"
 
 ### Header ###
-st.image('images/iceberg.jpg', use_column_width=True, width=500)
+st.image('images/iceberg.jpg', use_column_width=True, width=640)
 st.markdown(
 "<h2 style='text-align: center'>"
 "<strong>Le changement climatique</strong>"
@@ -15,9 +15,9 @@ st.markdown(
 , unsafe_allow_html=True)
 
 ### Menu latéral et création des pages ###
-st.sidebar.title("Sommaire")
+st.sidebar.title("Changement climatique & catastrophes naturelles")
 pages=["Présentation du projet", "DataVizualization", "Modélisation"]
-page=st.sidebar.radio("",pages)
+page=st.sidebar.radio("Sommaire",pages)
 st.sidebar.info(
 "Auteurs du projet :"
 "\n\n"
