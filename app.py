@@ -6,11 +6,11 @@ df = "à définir"
 
 st.title("Projet data sur le changement climatique et les catastrophes naturelles")
 st.sidebar.title("Sommaire")
-pages=["Exploration", "DataVizualization", "Modélisation"]
+pages=["Présentation du projet", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("Aller vers", pages)
 
 if page == pages[0] : 
-  st.write("### Introduction")
+  st.write("### Présentation du projet")
 
 if page == pages[1] : 
   st.write("### DataVizualization")
