@@ -7,7 +7,7 @@ import streamlit as st
 df = "à définir"
 
 ### Header
-image_iceberg = Image.open('images/iceberg.jpg')
+#image_iceberg = Image.open('images/iceberg.jpg')
 st.image('images/iceberg.jpg', use_column_width=True, width=500)
 st.markdown(
 "<h2 style='text-align: center'>"
