@@ -13,7 +13,7 @@ df_temp_catnat_1950 = pd.read_csv('datasets/df_temp_catnat_1950.csv', sep=',')
 df_temp_catnat_1950_month = pd.read_csv('datasets/df_temp_catnat_1950_month.csv', sep=',')
 
 ### Header ###
-st.image('images/iceberg.jpg', use_column_width=True, width=640)
+st.image('images/iceberg.jpg', use_column_width=True)
 st.markdown(
 "<h2 style='text-align: center'>"
 "<strong>Le changement climatique</strong>"
@@ -22,7 +22,7 @@ st.markdown(
 , unsafe_allow_html=True)
 
 ### Menu latéral et création des pages ###
-st.sidebar.image('images/earth.png', use_column_width=True)
+st.sidebar.image('images/earth.png', width=160)
 st.sidebar.title("Changement climatique & catastrophes naturelles")
 st.sidebar.subheader("Sommaire")
 pages=["Présentation du projet", "Nettoyage des données", "Visualisations", "Modélisation"]
