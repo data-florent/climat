@@ -4,7 +4,7 @@ import pandas as pd
 
 ### Importation des dataframes ###
 
-country_df_OWID_CO_CLEAN = pd.read_csv('datasets/country_df_OWID_CO_CLEAN.csv', sep=';')
+country_df_OWID_CO_CLEAN = pd.read_csv('datasets/country_df_OWID_CO_CLEAN.csv', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True, width=640)
