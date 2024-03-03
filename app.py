@@ -56,7 +56,7 @@ if page == pages[1] :
                     range_color=[0,15], # permet de garder la même échelle pour toutes les années
                     hover_name='country', projection='natural earth', animation_frame='year',
                     title='Part (en %) de contribution au réchauffement climatique, basée sur les émissions de GES')
-  st.write(fig)
+  st.plotly_chart(fig, use_container_width=True)
 
 
 if page == pages[2] : 
