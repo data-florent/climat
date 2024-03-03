@@ -3,7 +3,7 @@ import streamlit as st
 
 ### Importation des dataframes ###
 
-df = "à définir"
+country_df_OWID_CO_CLEAN = pd.read_csv('datasets/country_df_OWID_CO_CLEAN')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True, width=640)
@@ -26,8 +26,7 @@ st.sidebar.info(
 "[Florent](https://www.linkedin.com/), "
 "[Romain](https://www.linkedin.com/)"
 "\n\n"
-"Projet fil rouge Data Analyst Avril 2024, "
-"[DataScientest](https://datascientest.com/)"
+"Projet réalisé dans le cadre de la formation [DataScientest](https://datascientest.com/) de Data Analyst, promotion Septembre 2023 - Avril 2024"
 "\n\n"
 "Données :"
 "\n"
@@ -42,6 +41,7 @@ if page == pages[0] :
 
 if page == pages[1] : 
   st.write("### DataVizualization")
+  country_df_OWID_CO_CLEAN.head()
 
 if page == pages[2] : 
   st.write("### Modélisation")
