@@ -1,5 +1,6 @@
 ### Importation des librairies ###
 import streamlit as st
+import pandas as pd
 
 ### Importation des dataframes ###
 
