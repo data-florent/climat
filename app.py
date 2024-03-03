@@ -49,7 +49,7 @@ if page == pages[1] :
   st.dataframe(country_df_OWID_CO_CLEAN.head())
   sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
   sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
-  fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
+  fig = plotly.express.choropleth(sorted_country_df_OWID_CO_CLEAN,
                     locationmode='country names', locations='country',
                     color='share_of_temperature_change_from_ghg',
                     color_continuous_scale=px.colors.sequential.Bluered,
