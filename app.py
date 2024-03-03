@@ -1,10 +1,14 @@
 ### Importation des librairies ###
 import streamlit as st
 import pandas as pd
+import numpy as np
+import plotly.express as px
 
 ### Importation des dataframes ###
 
 country_df_OWID_CO_CLEAN = pd.read_csv('datasets/country_df_OWID_CO_CLEAN.csv', sep=',')
+df_temp_catnat_1950 = pd.read_csv('datasets/df_temp_catnat_1950.csv', sep=',')
+df_temp_catnat_1950_month = pd.read_csv('datasets/df_temp_catnat_1950_month.csv', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True, width=640)
@@ -43,6 +47,17 @@ if page == pages[0] :
 if page == pages[1] : 
   st.write("### DataVizualization")
   st.dataframe(country_df_OWID_CO_CLEAN.head())
+  sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
+  sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
+  fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
+                    locationmode='country names', locations='country',
+                    color='share_of_temperature_change_from_ghg',
+                    color_continuous_scale=px.colors.sequential.Bluered,
+                    range_color=[0,15], # permet de garder la même échelle pour toutes les années
+                    hover_name='country', projection='natural earth', animation_frame='year',
+                    title='Part (en %) de contribution au réchauffement climatique, basée sur les émissions de GES')
+  st.write(fig)
+
 
 if page == pages[2] : 
   st.write("### Modélisation")
