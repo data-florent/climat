@@ -22,6 +22,7 @@ st.markdown(
 , unsafe_allow_html=True)
 
 ### Menu latéral et création des pages ###
+st.image('images/earth.png', use_column_width=True)
 st.sidebar.title("Changement climatique & catastrophes naturelles")
 st.sidebar.subheader("Sommaire") 
 pages=["Présentation du projet", "Nettoyage des données", "Visualisations", "Modélisation"]
