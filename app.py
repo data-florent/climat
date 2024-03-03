@@ -42,7 +42,7 @@ if page == pages[0] :
 
 if page == pages[1] : 
   st.write("### DataVizualization")
-  country_df_OWID_CO_CLEAN.head()
+  st.dataframe(country_df_OWID_CO_CLEAN.head())
 
 if page == pages[2] : 
   st.write("### Modélisation")
