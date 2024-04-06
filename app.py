@@ -137,7 +137,7 @@ if page == pages[2] :
 
     df_repartition = world_df_OWID_CO_CLEAN[world_df_OWID_CO_CLEAN.year >= 2000]
     df_repartition.rename(columns={"cement_co2": "Ciment", "coal_co2": "Charbon", "flaring_co2": "Torchage", "gas_co2": "Gaz", "oil_co2": "Pétrole"}, inplace=True)
-    fig = plt.figure()
+    fig, ax = plt.figure()
     #sns.barplot(x=df_repartition['year'], y=df_repartition['Ciment'])
     ax = df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.bar(x='year', stacked=True)
     #plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
