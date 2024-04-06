@@ -66,6 +66,15 @@ if page == pages[0] :
   "</ul>"
   "</p>"
   , unsafe_allow_html=True)
+  st.markdown("<h3>3. Méthodes et outils de travail</h3>"
+	"<p style='text-align: justify'>"
+	"Les différents fichiers de notre projet ont été importés et stockés dans un dossier partagé sur Google Drive, ce qui a facilité le travail d'équipe. "
+  "\n\n"
+  "Le code a quant à lui été réalisé sur la plateforme Google Colab, ce qui a permis à l’ensemble du groupe de travailler de manière collaborative sur le projet avec la création de plusieurs notebooks, dont un notebook dédié au nettoyage des données et un notebook axé sur les visualisations et le machine learning."
+  "\n\n"
+  "Nous avons utilisé le langage informatique <strong>Python</strong> et plusieurs librairies associées : <strong>Pandas</strong> et <strong>Numpy</strong> pour le traitement des données ; <strong>Matplotlib, Seaborn</strong> et <strong>Plotly</strong> pour la visualisation ; <strong>Scikit-Learn</strong> et <strong>Prophet</strong> pour le machine learning."
+  "</p>"
+  , unsafe_allow_html=True)
 
 # Page Nettoyage des données
 if page == pages[1] : 
