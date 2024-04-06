@@ -143,9 +143,9 @@ if page == pages[2] :
     #plt.xlabel("Années")
     #plt.ylabel("Emissions en millions de tonnes")
     #st.pyplot(plot.get_figure())
-    fig = plt.figure(figsize = (5, 3))
-    sns.barplot(x=df_repartition['year'], y=df_repartition[['Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']], stacked=True)
-    st.pyplot(fig, use_container_width=True)
+    fig = plt.figure()
+    sns.barplot(x=df_repartition['year'], y=df_repartition['Ciment'])
+    st.pyplot(fig)
 
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
