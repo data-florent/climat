@@ -128,12 +128,21 @@ if page == pages[2] :
     y='co2',
     color='country',
     labels={'temp_SUM': 'Évolution de la température', 'year': 'Année'},
-    title='Evolution des émissions de dioxyde de carbone à la surface du globe par pays (en millions de tonnes)',)
+    title='Evolution des émissions de dioxyde de carbone par pays (en millions de tonnes)',)
     fig.update_layout(
     xaxis=dict(title='Année'),
     yaxis=dict(title='Évolution des émissions de CO2'),
     )
     st.plotly_chart(fig, use_container_width=True)
+
+    df_repartition = world_df_OWID_CO_CLEAN[world_df_OWID_CO_CLEAN.year >= 2000]
+    df_repartition.rename(columns={"cement_co2": "Ciment", "coal_co2": "Charbon", "flaring_co2": "Torchage", "gas_co2": "Gaz", "oil_co2": "Pétrole"}, inplace=True)
+    fig = plt.figure()
+    df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot(x='year', kind='bar', stacked=True, linewidth=15)
+    plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
+    plt.xlabel("Années")
+    plt.ylabel("Emissions en millions de tonnes")
+    st.pyplot(fig)
 
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
