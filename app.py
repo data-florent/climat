@@ -136,18 +136,12 @@ if page == pages[2] :
     st.plotly_chart(fig, use_container_width=True)
 
     df_repartition = world_df_OWID_CO_CLEAN[world_df_OWID_CO_CLEAN.year >= 2000]
-    df_repartition.rename(columns={"cement_co2": "Ciment", "coal_co2": "Charbon", "flaring_co2": "Torchage", "gas_co2": "Gaz", "oil_co2": "Pétrole"}, inplace=True)
-    # fig, ax = plt.subplots()
-    #sns.barplot(x=df_repartition['year'], y=df_repartition['Ciment'])
-    # ax = df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.barh(x='year', stacked=True)
-    #plt.xlabel("Années")
-    #plt.ylabel("Emissions en millions de tonnes")
-    
-    #fig = plt.figure()
-    #plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
+    df_repartition.rename(columns={"cement_co2": "Ciment", "coal_co2": "Charbon", "flaring_co2": "Torchage", "gas_co2": "Gaz", "oil_co2": "Pétrole"}, inplace=True) 
     graph = df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.barh(
     x='year',
-    title='Titre',
+    title="Répartition de l'origine des gaz à effet de serre entre 2000 et 2021",
+    ylabel="Années",
+    xlabel="Emissions en millions de tonnes",
     stacked=True).figure
     st.pyplot(graph, use_container_width=True)
 
