@@ -156,6 +156,16 @@ if page == pages[2] :
                     title='Part (en %) de contribution au réchauffement climatique, basée sur les émissions de GES')
     st.plotly_chart(fig, use_container_width=True)
 
+    sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[(sorted_country_df_OWID_CO_CLEAN['year']>=1990)&(sorted_country_df_OWID_CO_CLEAN['year']<=2019)]
+    fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
+                    locationmode='country names', locations='country',
+                    color='ghg_per_capita',
+                    color_continuous_scale=px.colors.sequential.Bluered,
+                    range_color=[0,25], # permet de garder la même échelle pour toutes les années
+                    hover_name='country', projection='natural earth', animation_frame='year',
+                    title='Emissions de GES par individu selon les pays')
+    st.plotly_chart(fig, use_container_width=True)
+
   # Sous-page Catastrophes naturelles
   if dataviz_page == viz3:
     st.subheader("Catastrophes naturelles")
