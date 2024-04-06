@@ -60,9 +60,9 @@ if page == pages[0] :
 	"<p style='text-align: justify'>"
 	"Plusieurs jeux de données téléchargeables librement ont été utilisés :"
   "<ul>"
-  "<li>des relevés de températures effectués par la <a href='https://data.giss.nasa.gov/gistemp/'>Nasa</a> sur une période allant de 1880 à nos jours ;</li>"
-  "<li>un dataset <a href='https://github.com/owid/co2-data/'>Our World In Data (OWID)</a> portant sur les gaz à effet de serre de 1750 à nos jours ;</li>"
-  "<li>un fichier <a href='https://emdat.be/'>EMDAT</a> recensant les catastrophes naturelles de 1950 à aujourd'hui, produit par le CRED au sein de l'Université de Louvain ;</li>"
+  "<li>8 fichiers correspondant à des relevés de températures effectués par la <a href='https://data.giss.nasa.gov/gistemp/'>Nasa</a> dans le monde ou dans certaines régions du globe, et ce sur une période allant de 1880 à nos jours. 144 lignes et 19 colonnes sont dénombrées dans le principal fichier ;</li>"
+  "<li>1 dataset <a href='https://github.com/owid/co2-data/'>Our World In Data (OWID)</a> portant sur les gaz à effet de serre de 1750 à nos jours. Ce dataset comporte 50 598 lignes et 79 colonnes ;</li>"
+  "<li>1 tableau <a href='https://emdat.be/'>EMDAT</a> recensant les catastrophes naturelles de 1950 à aujourd'hui, produit par le CRED au sein de l'Université de Louvain. 14 679 lignes et 46 colonnes sont comptabilisées dans ce tableau.</li>"
   "</ul>"
   "</p>"
   , unsafe_allow_html=True)
