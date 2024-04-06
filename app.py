@@ -142,9 +142,11 @@ if page == pages[2] :
     # ax = df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.barh(x='year', stacked=True)
     #plt.xlabel("Années")
     #plt.ylabel("Emissions en millions de tonnes")
-    fig = plt.figure()
-    plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
-    st.pyplot(df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.barh(x='year', stacked=True).figure, use_container_width=True)
+    
+    #fig = plt.figure()
+    #plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
+    figure = df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.barh(x='year', stacked=True).figure
+    st.pyplot(figure, title="Titre", use_container_width=True)
 
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
