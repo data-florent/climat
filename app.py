@@ -144,7 +144,7 @@ if page == pages[2] :
     #plt.ylabel("Emissions en millions de tonnes")
     #st.pyplot(plot.get_figure())
     fig = plt.figure()
-    df_repartition.plot.bar(y=['Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole'], x='year', stacked=True)
+    df_repartition.plt.bar(y=['Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole'], x='year', stacked=True)
     st.pyplot(fig, use_container_width=True)
 
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
