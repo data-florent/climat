@@ -51,9 +51,9 @@ if page == pages[0] :
 	"Plusieurs objectifs ont été fixés dans le cadre de ce projet : "
   "\n\n"
   "constater le réchauffement climatique mondial et régional ; "
-  "\n\n"
+  "\n"
   "démontrer des corrélations ou non selon le PIB et d’autres variables ; "
-  "\n\n"
+  "\n"
   " démontrer des corrélations entre l’évolution des variations de températures et les catastrophes naturelles. "
   "</p>"
   , unsafe_allow_html=True)
