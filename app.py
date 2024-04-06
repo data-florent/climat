@@ -104,9 +104,13 @@ if page == pages[4] :
   st.write("texte")
   st.write("<p style='text-align: justify'>"
 "Ce projet nous aura permis de visualiser par nous-mêmes les différentes composantes du réchauffement climatique. Nous avons notamment utilisé les librairies Pandas, Matplotlib, Seaborn et Plotly. Nous avons aussi choisi d’élargir le sujet, ou plus précisément de traiter la notion de dérèglement climatique en utilisant un jeu de données complémentaires, celles des catastrophes naturelles."
+"</p>"
 "\n\n"
+"<p style='text-align: justify'>"
 "Lors de la phase de Machine Learning, nous avons été confrontés aux limites des outils à notre disposition, compte tenu notamment du caractère temporel des données à traiter. Néanmoins, nous sommes parvenus à de premiers résultats, mais aussi à une prise de conscience des limites de nos modèles. Le réchauffement climatique est une problématique complexe et multifactorielle."
+"</p>"
 "\n\n"
+"<p style='text-align: justify'>"
 "D’autres modèles de Machine Learning plus complexes auraient peut-être pu nous permettre d’aboutir à des prédictions plus précises. Nous pensons notamment aux modèles ARIMA/SARIMA/SARIMAX, des modèles dédiés à l’étude des séries de données temporelles."
 "</p>"
 , unsafe_allow_html=True)
