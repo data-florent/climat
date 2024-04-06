@@ -24,7 +24,7 @@ st.markdown(
 ### Menu latéral et création des pages ###
 st.sidebar.title("Changement climatique & catastrophes naturelles")
 st.sidebar.subheader("Sommaire")
-pages=["Présentation du projet", "Nettoyage des données", "Visualisations", "Modélisation"]
+pages=["Présentation du projet", "Nettoyage des données", "Visualisations", "Prédictions", "Conclusion et perspectives"]
 page=st.sidebar.radio("",pages)
 st.sidebar.info(
 "Auteurs du projet :"
@@ -81,6 +81,10 @@ if page == pages[2] :
   if dataviz_page == viz3:
     st.write("Catastrophes naturelles")
 
-# Page Modélisation
+# Page Prédictions
 if page == pages[3] : 
-  st.write("### Modélisation")
+  st.write("### Prédictions")
+
+# Page Conclusion et perspectives
+if page == pages[3] : 
+  st.write("### Conclusion et perspectives")
