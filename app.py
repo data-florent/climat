@@ -140,10 +140,10 @@ if page == pages[2] :
     # fig, ax = plt.subplots()
     #sns.barplot(x=df_repartition['year'], y=df_repartition['Ciment'])
     # ax = df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.barh(x='year', stacked=True)
-    #plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
     #plt.xlabel("Années")
     #plt.ylabel("Emissions en millions de tonnes")
     fig = plt.figure()
+    plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
     st.pyplot(df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.barh(x='year', stacked=True).figure, use_container_width=True)
 
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
