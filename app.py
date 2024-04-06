@@ -45,17 +45,17 @@ st.sidebar.info(
 ### Contenu des pages ###
 # Page Présentation du projet
 if page == pages[0] : 
-  st.write("### Présentation du projet")
+  st.header("Présentation du projet")
 
 # Page Nettoyage des données
 if page == pages[1] : 
-  st.write("### Nettoyage des données")
+  st.header("Nettoyage des données")
 
 # Page Visualisations
 if page == pages[2] : 
   st.header("Visualisations")
   viz1 = "Evolutions du climat"
-  viz2 = "Emissions de gaz à effet de serre"
+  viz2 = "Rôle des activités humaines"
   viz3 = "Catastrophes naturelles"
   dataviz_page = st.radio("", (viz1, viz2, viz3))
   
@@ -63,8 +63,9 @@ if page == pages[2] :
   if dataviz_page == viz1:
     st.subheader("Evolutions du climat")
   
-  # Sous-page Emissions de gaz à effet de serre
+  # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
+    st.subheader("Rôle des activités humaines")
     st.dataframe(country_df_OWID_CO_CLEAN.head())
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
@@ -79,12 +80,25 @@ if page == pages[2] :
 
   # Sous-page Catastrophes naturelles
   if dataviz_page == viz3:
-    st.write("Catastrophes naturelles")
+    st.subheader("Catastrophes naturelles")
+    st.write("texte")
 
 # Page Prédictions
 if page == pages[3] : 
-  st.write("### Prédictions")
+  st.header("Prédictions")
+  pred1 = "Catastrophes naturelles"
+  pred2 = "Températures"
+  pred_page = st.radio("", (pred1, pred2))
+  
+  # Sous-page Catastrophes naturelles
+  if pred_page == pred1:
+    st.subheader("Catastrophes naturelles")
+  
+  # Sous-page Températures
+  if pred_page == pred2:
+    st.subheader("Températures")
 
 # Page Conclusion et perspectives
 if page == pages[4] : 
-  st.write("### Conclusion et perspectives")
+  st.subheader("Conclusion et perspectives")
+  st.write("texte")
