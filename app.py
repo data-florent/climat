@@ -11,6 +11,7 @@ import plotly.express as px
 country_df_OWID_CO_CLEAN = pd.read_csv('datasets/country_df_OWID_CO_CLEAN.csv', sep=',')
 df_temp_catnat_1950 = pd.read_csv('datasets/df_temp_catnat_1950.csv', sep=',')
 df_temp_catnat_1950_month = pd.read_csv('datasets/df_temp_catnat_1950_month.csv', sep=',')
+world_df_OWID_CO_CLEAN= pd.read_csv('datasets/world_df_OWID_CO_CLEAN.csv', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -84,13 +85,16 @@ if page == pages[0] :
 if page == pages[1] : 
   st.header("Nettoyage des données")
   st.write("<p style='text-align: justify'>"
-"Texte 1"
-"</p>"
-"\n\n"
-"<p style='text-align: justify'>"
-"Texte 2"
-"</p>"
-, unsafe_allow_html=True)
+  "Texte 1"
+  "</p>"
+  "\n\n"
+  "<p style='text-align: justify'>"
+  "Texte 2"
+  "</p>"
+  , unsafe_allow_html=True)
+
+  st.dataframe(country_df_OWID_CO_CLEAN.head())
+
 
 # Page Visualisations
 if page == pages[2] : 
@@ -107,7 +111,19 @@ if page == pages[2] :
   # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
     st.subheader("Rôle des activités humaines")
-    st.dataframe(country_df_OWID_CO_CLEAN.head())
+    
+    fig = px.line(world_df_OWID_CO_CLEAN,
+    x='year',
+    y='co2',
+    labels={'co2': 'Evolution du co2', 'year': 'Année'},
+    title='Evolution des émissions de dioxyde de carbone à la surface du globe (en millions de tonnes)',)
+    fig.update_layout(
+    xaxis=dict(title='Année'),
+    yaxis=dict(title='Évolution des émissions de CO2 '),
+    )
+    st.plotly_chart(fig, use_container_width=True)
+    
+    
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
     fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
