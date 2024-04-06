@@ -138,12 +138,11 @@ if page == pages[2] :
     df_repartition = world_df_OWID_CO_CLEAN[world_df_OWID_CO_CLEAN.year >= 2000]
     df_repartition.rename(columns={"cement_co2": "Ciment", "coal_co2": "Charbon", "flaring_co2": "Torchage", "gas_co2": "Gaz", "oil_co2": "Pétrole"}, inplace=True)
     st.dataframe(df_repartition.head())
-    fig = plt.figure(figsize = (5, 3))
-    sns.barplot(data = df_repartition, y='Ciment', x='year', stacked=True, linewidth=15)
-    plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
-    plt.xlabel("Années")
-    plt.ylabel("Emissions en millions de tonnes")
-    st.pyplot(fig)
+    sns.barplot(data = df_repartition, y=['Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole'], x='year', stacked=True, linewidth=15)
+    #plt.title("Répartition de l'origine des gaz à effet de serre entre 2000 et 2021")
+    #plt.xlabel("Années")
+    #plt.ylabel("Emissions en millions de tonnes")
+    st.pyplot()
 
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
