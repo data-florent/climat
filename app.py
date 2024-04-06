@@ -46,10 +46,26 @@ st.sidebar.info(
 # Page Présentation du projet
 if page == pages[0] : 
   st.header("Présentation du projet")
+  st.markdown("<h3>1. Objectifs du projet</h3>"
+	"<p style='text-align: justify'>"
+	"Plusieurs objectifs ont été fixés dans le cadre de ce projet : "
+  "constater le réchauffement climatique mondial et régional ; "
+  "démontrer des corrélations ou non selon le PIB et d’autres variables ; "
+  " démontrer des corrélations entre l’évolution des variations de températures et les catastrophes naturelles. "
+  "</p>"
+  , unsafe_allow_html=True)
 
 # Page Nettoyage des données
 if page == pages[1] : 
   st.header("Nettoyage des données")
+  st.write("<p style='text-align: justify'>"
+"Texte 1"
+"</p>"
+"\n\n"
+"<p style='text-align: justify'>"
+"Texte 2"
+"</p>"
+, unsafe_allow_html=True)
 
 # Page Visualisations
 if page == pages[2] : 
@@ -101,7 +117,6 @@ if page == pages[3] :
 # Page Conclusion et perspectives
 if page == pages[4] : 
   st.header("Conclusion et perspectives")
-  st.write("texte")
   st.write("<p style='text-align: justify'>"
 "Ce projet nous aura permis de visualiser par nous-mêmes les différentes composantes du réchauffement climatique. Nous avons notamment utilisé les librairies Pandas, Matplotlib, Seaborn et Plotly. Nous avons aussi choisi d’élargir le sujet, ou plus précisément de traiter la notion de dérèglement climatique en utilisant un jeu de données complémentaires, celles des catastrophes naturelles."
 "</p>"
