@@ -17,6 +17,7 @@ df_global_annuel= pd.read_csv('datasets/df_global_annuel.csv', sep=',')
 df_nord_hem_mean_annuel= pd.read_csv('datasets/df_nord_hem_mean_annuel.csv', sep=',')
 df_sud_hem_mean_annuel= pd.read_csv('datasets/df_sud_hem_mean_annuel.csv', sep=',')
 continent_df_OWID_CO_CLEAN= pd.read_csv('datasets/continent_df_OWID_CO_CLEAN.csv', sep=',')
+EUROPE_country_df_OWID_CO_CLEAN= pd.read_csv('datasets/EUROPE_country_df_OWID_CO_CLEAN.csv', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -205,6 +206,26 @@ if page == pages[2] :
     )
     st.plotly_chart(fig, use_container_width=True)
 
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Ce graphique montre que l’Asie est en tête au niveau de l'évolution de la température, suivie par l'Amérique du Nord et par l'Europe."
+    "</p>"
+    , unsafe_allow_html=True)
+
+    fig = px.line(EUROPE_country_df_OWID_CO_CLEAN,
+        x='year',
+        y='temp_SUM',
+        color='country',
+        labels={'temp_SUM': 'Évolution de la température', 'year': 'Année'},
+        title="Variation de la température moyenne à la surface du globe (en °C) pour les pays d'Europe",
+    )
+    fig.update_layout(
+        xaxis=dict(title='Année'),
+        yaxis=dict(title='Évolution de la température '),
+        width=800,
+        height=600,
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
 
   # Sous-page Rôle des activités humaines
