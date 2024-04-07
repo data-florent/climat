@@ -567,7 +567,7 @@ if page == pages[3] :
     sns.lineplot(x=df_pm.index, y=df_pm[metrique], data=df_pm, color= 'blue')
     plt.ylabel(metrique)
     plt.xlabel("Horizon (days)")
-    plt.xticks([181,1825])
+    plt.xticks([0,216], [181,1825])
     plt.title(metrique)
     st.pyplot(fig, use_container_width=True)
 
