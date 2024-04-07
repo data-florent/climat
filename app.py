@@ -522,6 +522,33 @@ if page == pages[3] :
     x='ds',
     y='yhat',
     labels={'ds': 'Mois', 'yhat': 'Nombre de catastrophes'},
+    title='Prédiction du nombre de catastrophes naturelles',)
+    fig.update_layout(
+    xaxis=dict(title='Année'),
+    yaxis=dict(title='Nombre de catastrophes naturelles '),
+    width=1000,
+    height=500,)
+    st.plotly_chart(fig, use_container_width=True)
+
+    fig = plt.figure(figsize =(15,8))
+    sns.lineplot(x=forecast["ds"], y=forecast["yhat"], data=forecast, color= '#ff81c0', label="Prédictions")
+    sns.lineplot(x=forecast["ds"], y=forecast["y"], data=forecast, color= '#53fca1', label="Vraies valeurs")
+    plt.ylabel("Nombre de catastrophes naturelles")
+    plt.xlabel("Années")
+    plt.title("Nombre de catastrophes naturelles")
+    st.pyplot(fig, use_container_width=True)
+
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Par souci de lisibilité, nous utilisons la librairie Plotly Express pour représenter uniquement la dernière partie de la courbe, qui porte sur les prédictions de la période 2022 à 2026."
+    "</p>"
+    "\n\n"
+    , unsafe_allow_html=True)
+
+    fig = px.line(forecast.iloc[-60:],
+    x='ds',
+    y='yhat',
+    labels={'ds': 'Mois', 'yhat': 'Nombre de catastrophes'},
     title='Prédiction du nombre de catastrophes naturelles (2022-2026)',)
     fig.update_layout(
     xaxis=dict(title='Année'),
@@ -529,6 +556,19 @@ if page == pages[3] :
     width=1000,
     height=500,)
     st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown("<h3>Performance du modèle</h3>"
+    "<p style='text-align: justify'>"
+    "La performance du modèle est évaluée en utilisant des techniques de validation croisée. Les prédictions sont comparées aux vraies valeurs sur des périodes spécifiques et différentes métriques de performance sont calculées."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "L’écart entre les valeurs prédites et les valeurs réelles est évalué par les métriques telles que la MAPE (Mean Absolute Percentage Error), moyenne des écarts en valeur absolue par rapport aux valeurs observées. "
+    "</p>"
+    , unsafe_allow_html=True)
+
+    df_cv = cross_validation(model, initial='3650 days', period='180 days', horizon = '1825 days')
+    df_pm = performance_metrics(df_cv)
 
   # Sous-page Températures
   if pred_page == pred2:
