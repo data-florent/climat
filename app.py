@@ -558,9 +558,8 @@ if page == pages[3] :
 
     df_cv = cross_validation(model, initial='3650 days', period='180 days', horizon = '1825 days')
     df_pm = performance_metrics(df_cv)
-
-		st.markdown('<br><strong>Choix de la métrique</strong><br>', unsafe_allow_html=True)
-		metrique = st.selectbox('Sélectionnez la métrique :', (df_pm[['mse', 'rmse']]))
+    st.markdown('<br><strong>Choix de la métrique</strong><br>', unsafe_allow_html=True)
+    metrique = st.selectbox('Sélectionnez la métrique :', (df_pm[['mse', 'rmse']]))
 
     st.markdown("<h3>4. Conclusion</h3>"
     "<p style='text-align: justify'>"
