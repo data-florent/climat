@@ -497,11 +497,11 @@ if page == pages[3] :
 
     st.markdown("<h3>3. Modélisation</h3>"
     "<p style='text-align: justify'>"
-    "Le modèle Prophet est entraîné sur une période de 17 ans (2005-2021) et utilisé pour faire des prédictions sur les 5 années suivantes (2022-2026). Les prédictions sont ensuite visualisées avec des intervalles de confiance."
+    "Le modèle Prophet est entraîné sur une période de 17 ans (2005-2021) et utilisé pour faire des prédictions sur les 5 années suivantes (2022-2026)."
     "</p>"
     "\n\n"
     "<p style='text-align: justify'>"
-    "Sur le graphique de la librairie Prophet, les points noirs représentent les vraies valeurs (nombres mensuels de catastrophes naturelles). La ligne bleu foncé représente la prédiction du modèle et le nuage bleu ciel est la marge d'incertitude (fourchette basse et fourchette haute des prédictions)."
+    "Sur le graphique, les points noirs représentent les vraies valeurs (nombres mensuels de catastrophes naturelles). La ligne bleu foncé représente la prédiction du modèle."
     "</p>"
     , unsafe_allow_html=True)
 
@@ -517,18 +517,6 @@ if page == pages[3] :
     future_dates = model.make_future_dataframe(periods=60, freq='MS')
     forecast = model.predict(future_dates)
     #model.plot(forecast, uncertainty=True)
-
-    fig = px.line(forecast,
-    x='ds',
-    y='yhat',
-    labels={'ds': 'Mois', 'yhat': 'Nombre de catastrophes'},
-    title='Prédiction du nombre de catastrophes naturelles',)
-    fig.update_layout(
-    xaxis=dict(title='Année'),
-    yaxis=dict(title='Nombre de catastrophes naturelles '),
-    width=1000,
-    height=500,)
-    st.plotly_chart(fig, use_container_width=True)
 
     fig = plt.figure(figsize =(15,8))
     sns.lineplot(x=forecast["ds"], y=forecast["yhat"], data=forecast, color= 'blue', label="Prédictions")
