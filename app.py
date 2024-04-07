@@ -113,7 +113,7 @@ if page == pages[2] :
     st.markdown("<h3>1. Evolution de la température moyenne de la Terre</h3>"
     , unsafe_allow_html=True)
 
-    plt.figure(figsize =(15,8))
+    fig = plt.figure(figsize =(15,8))
     sns.lineplot(x=df_global_annuel["Year"], y=df_global_annuel["J-D"], data=df_global_annuel, color = '#5a86ad', label="Global")
     plt.ylabel("Index de Variation de Température")
     plt.xlabel("Années")
