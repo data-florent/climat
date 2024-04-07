@@ -13,7 +13,7 @@ country_df_OWID_CO_CLEAN = pd.read_csv('datasets/country_df_OWID_CO_CLEAN.csv', 
 df_temp_catnat_1950 = pd.read_csv('datasets/df_temp_catnat_1950.csv', sep=',')
 df_temp_catnat_1950_month = pd.read_csv('datasets/df_temp_catnat_1950_month.csv', sep=',')
 world_df_OWID_CO_CLEAN= pd.read_csv('datasets/world_df_OWID_CO_CLEAN.csv', sep=',')
-df_global_annuel= pd.read_csv('/datasets/df_global_annuel.csv', sep=',')
+df_global_annuel= pd.read_csv('datasets/df_global_annuel.csv', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
