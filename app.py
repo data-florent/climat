@@ -562,7 +562,7 @@ if page == pages[3] :
     metrique = st.selectbox('Sélectionnez la métrique :', ('mse', 'rmse', 'mae', 'mape', 'mdape', 'smape', 'coverage'))
 
     fig = plt.figure(figsize =(15,8))
-    sns.lineplot(x=df_pm["horizon"], y=df_pm[metrique], data=df_pm, color= 'blue')
+    sns.lineplot(x=range(181,1825), y=df_pm[metrique], data=df_pm, color= 'blue')
     plt.ylabel(metrique)
     plt.xlabel("Horizon (years)")
     #plt.xticks(range(5), [1,2,3,4,5])
