@@ -170,7 +170,7 @@ if page == pages[2] :
   if dataviz_page == viz3:
     st.subheader("Catastrophes naturelles")
 
-    fig, axes = plt.subplots(2, 2, figsize=(16, 10), sharey=True)
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10), sharey=True)
     plt.setp(axes, ylabel='label')
     fig.suptitle("Variables en fonction de l'évolution de la température moyenne annuelle de 1950 à 2022 (période de référence: 1951-1980)")
 
@@ -200,7 +200,33 @@ if page == pages[2] :
 
     st.pyplot(fig, use_container_width=True)
 
-    st.write("texte")
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Il semble y avoir une corrélation forte entre l'évolution annuelle moyenne de la température (par rapport à la période de référence) et le nombre de catastrophes naturelles enregistrées. Ainsi, plus une année est chaude, et plus elle compte de catastrophes naturelles."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Il semble également y avoir une corrélation entre l'évolution annuelle moyenne de la température et le coût des dégâts. Cependant, il convient de noter qu'un nombre important d'années entre 1950 et 2022 se caractérise à la fois par une variation quasi-nulle de la température et par un coût climatique très faible."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "La même analyse peut être exposée pour le lien entre l'évolution annuelle moyenne de la température et le nombre annuel de personnes affectées par les catastrophes naturelles. Néanmoins, les points du nuage s'écartent davantage de la droite que dans le cas précédent. La corrélation semble ainsi un peu moins marquée."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Enfin, il semble ne pas exister de corrélation entre l'évolution annuelle moyenne de la température et le nombre annuel de décès liés aux catastrophes naturelles. En effet, la quasi-totalité des points du nuage se concentre en bas à gauche de la figure. Cela traduit le fait que seules quelques rares années présentent un bilan humain lourd ; peu de morts sont à déplorer dans la quasi-totalité des années."
+    "</p>"
+    "\n\n"
+    "<h3>Tests statistiques</h3>"
+    "<p style='text-align: justify'>"
+    "Nous avons utilisé le test de Pearson pour déterminer le niveau de corrélation entre la variable température et chacune des quatre variables précédemment affichées dans les graphiques. Pour chacune des trois premières variables (nombre de catastrophes ; coût matériel des catastrophes ; nombre de personnes affectées), la p-valeur est inférieure à 0.05, donc on rejette H0 (x et y pas corrélées) et on accepte H1 (x et y corrélées). Il existe ainsi une corrélation positive entre les variables."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "A l’inverse, pour la quatrième variable (nombre de décès), la p-valeur est supérieure à 0.05, donc l'hypothèse H0 (x et y pas corrélées) n'est pas rejetée. On ne retient donc pas de corrélation entre les deux variables température / nombre de décès."
+    "</p>"
+    "\n\n"
+    , unsafe_allow_html=True)
 
 # Page Prédictions
 if page == pages[3] : 
