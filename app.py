@@ -16,6 +16,7 @@ world_df_OWID_CO_CLEAN= pd.read_csv('datasets/world_df_OWID_CO_CLEAN.csv', sep='
 df_global_annuel= pd.read_csv('datasets/df_global_annuel.csv', sep=',')
 df_nord_hem_mean_annuel= pd.read_csv('datasets/df_nord_hem_mean_annuel.csv', sep=',')
 df_sud_hem_mean_annuel= pd.read_csv('datasets/df_sud_hem_mean_annuel.csv', sep=',')
+continent_df_OWID_CO_CLEAN= pd.read_csv('datasets/continent_df_OWID_CO_CLEAN.csv', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -158,15 +159,53 @@ if page == pages[2] :
     "<ul>"
     "<li>les activités humaines sont plus condensées sur l'hémisphère nord ;</li>"
     "<li>la proportion de terres émergées est plus importante au nord ;</li>"
-    "<li>-	les terres se réchauffent et refroidissent plus rapidement que l'eau, ce qui peut influencer les différences de température entre les deux hémisphères.</li>"
+    "<li>les terres se réchauffent et refroidissent plus rapidement que l'eau, ce qui peut influencer les différences de température entre les deux hémisphères.</li>"
     "</ul>"
     "</p>"
+    , unsafe_allow_html=True)
+
+    st.markdown("<h3>Heatmap mettant en évidence les corrélations</h3>"
     , unsafe_allow_html=True)
 
     cor = country_df_OWID_CO_CLEAN[["temp_SUM",'co2',"primary_energy_consumption",'gdp','population']].corr()
     fig, ax = plt.subplots(figsize = (10,10))
     sns.heatmap(cor, annot = True, ax = ax, cmap = "coolwarm")
     st.pyplot(fig, use_container_width=True)
+
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Le changement de la température moyenne à la surface du globe (en °C) causé par l'activité humaine semble être fortement corrélé avec les émissions totales de dioxyde de carbone (Co2)."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "On remarque aussi un lien clair entre la consommation d'énergie primaire et le PIB d'un pays. En effet, plus un pays est riche et développé, plus il consomme d'énergie, et donc plus il produit du dioxyde de carbone. De ce fait, sa responsabilité dans le changement global de la température terrestre s'accroît."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "A l’inverse, la population ne semble pas être corrélée de manière significative avec les autres facteurs."
+    "</p>"
+    , unsafe_allow_html=True)
+
+    st.markdown("<h3>2. Les différentes régions et l'évolution de la température</h3>"
+    , unsafe_allow_html=True)
+
+    continent_df_OWID_CO_CLEAN = continent_df_OWID_CO_CLEAN[continent_df_OWID_CO_CLEAN['regions'] != 'World']
+    fig = px.line(continent_df_OWID_CO_CLEAN,
+        x='year',
+        y='temp_SUM',
+        color='regions',
+        labels={'temp_SUM': 'Évolution de la température', 'year': 'Année'},
+        title='Variation de la température moyenne à la surface du globe (en °C)',
+    )
+    fig.update_layout(
+        xaxis=dict(title='Année'),
+        yaxis=dict(title='Évolution de la température'),
+        width=800,
+        height=600,
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+
 
   # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
