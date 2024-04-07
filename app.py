@@ -224,11 +224,10 @@ if page == pages[2] :
     "</p>"
     , unsafe_allow_html=True)
 
-    # Test statistique de corrélation entre la température et le nombre de catastrophes naturelles
-    # Utilisation du test de Pearson
+    # Utilisation du test statistique de Pearson
     x= df_temp_catnat_1950['J-D']
     y= df_temp_catnat_1950['Nombre']
-    st.write(stats.pearsonr(x,y))
+    st.write("Test de Pearson entre la température et le nombre de catastrophes naturelles :", stats.pearsonr(x,y))
 
     st.markdown(
     "<p style='text-align: justify'>"
