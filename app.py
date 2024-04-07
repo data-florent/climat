@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 from scipy import stats
+from joblib import load
 
 ### Importation des dataframes ###
 
@@ -18,6 +19,10 @@ df_nord_hem_mean_annuel= pd.read_csv('datasets/df_nord_hem_mean_annuel.csv', sep
 df_sud_hem_mean_annuel= pd.read_csv('datasets/df_sud_hem_mean_annuel.csv', sep=',')
 continent_df_OWID_CO_CLEAN= pd.read_csv('datasets/continent_df_OWID_CO_CLEAN.csv', sep=',')
 EUROPE_country_df_OWID_CO_CLEAN= pd.read_csv('datasets/EUROPE_country_df_OWID_CO_CLEAN.csv', sep=',')
+
+### Chargement des modèles de machine learning ###
+
+model_1 = load('machine_learning/model_1.joblib')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -478,6 +483,8 @@ if page == pages[3] :
   if pred_page == pred1:
     st.subheader("Catastrophes naturelles")
   
+  
+
   # Sous-page Températures
   if pred_page == pred2:
     st.subheader("Températures")
