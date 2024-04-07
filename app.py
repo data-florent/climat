@@ -13,6 +13,7 @@ country_df_OWID_CO_CLEAN = pd.read_csv('datasets/country_df_OWID_CO_CLEAN.csv', 
 df_temp_catnat_1950 = pd.read_csv('datasets/df_temp_catnat_1950.csv', sep=',')
 df_temp_catnat_1950_month = pd.read_csv('datasets/df_temp_catnat_1950_month.csv', sep=',')
 world_df_OWID_CO_CLEAN= pd.read_csv('datasets/world_df_OWID_CO_CLEAN.csv', sep=',')
+df_global_annuel= pd.read_csv('/datasets/df_global_annuel.csv', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -109,6 +110,16 @@ if page == pages[2] :
   if dataviz_page == viz1:
     st.subheader("Evolutions du climat")
   
+    st.markdown("<h3>1. Evolution de la température moyenne de la Terre</h3>"
+    , unsafe_allow_html=True)
+
+    plt.figure(figsize =(15,8))
+    sns.lineplot(x=df_global_annuel["Year"], y=df_global_annuel["J-D"], data=df_global_annuel, color = '#5a86ad', label="Global")
+    plt.ylabel("Index de Variation de Température")
+    plt.xlabel("Années")
+    plt.title("Evolution des températures terrestres globales")
+    st.pyplot(fig, use_container_width=True)
+
   # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
     st.subheader("Rôle des activités humaines")
@@ -162,11 +173,11 @@ if page == pages[2] :
     "</p>"
     "\n\n"
     "<p style='text-align: justify'>"
-    "On constate une légère hausse des émissions de CO2 de l'Angleterre (courbe orange), premier pays à avoir connu sa révolution industrielle, dès les années 1850. L’Angleterre est dépassée par les Etats-Unis (courbe bleu ciel) à partir des années 1900 qui connaissent alors une envolée vertigineuse jusque dans les années 2005 où une baisse s'opère alors jusqu'en 2020 où les émissions retrouvent leur niveau des années 1990."
+    "On constate une légère hausse des émissions de CO2 de l'Angleterre, premier pays à avoir connu sa révolution industrielle, dès les années 1850. L’Angleterre est dépassée par les Etats-Unis à partir des années 1900 qui connaissent alors une envolée vertigineuse jusque dans les années 2005 où une baisse s'opère alors jusqu'en 2020 où les émissions retrouvent leur niveau des années 1990."
     "</p>"
     "\n\n"
     "<p style='text-align: justify'>"
-    "Sur la même période, la Chine (courbe violette) récupère la première place avec des émissions de gaz à effet de serre qui augmentent de manière exponentielle pour arriver de nos jours à 12M de tonnes, soit deux fois plus que les Etats-Unis. L'Inde (courbe rose) se place en troisième position avec 2,7M de tonnes."
+    "Sur la même période, la Chine récupère la première place avec des émissions de gaz à effet de serre qui augmentent de manière exponentielle pour arriver de nos jours à 12M de tonnes, soit deux fois plus que les Etats-Unis. L'Inde se place en troisième position avec 2,7M de tonnes."
     "</p>"
     , unsafe_allow_html=True)
 
