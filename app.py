@@ -227,6 +227,41 @@ if page == pages[2] :
     )
     st.plotly_chart(fig, use_container_width=True)
 
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "En Europe, nous constatons que l'Allemagne est en tête en ce qui concerne l'augmentation des températures dûes aux gaz à effet de serre. Elle est suivie par la France, la Pologne et l'Italie."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Cela peut notamment s’expliquer par le fait que l’Allemagne est l’un des pays les plus riches du continent et que le charbon occupe une place importante dans son mix énergétique."
+    "</p>"
+   , unsafe_allow_html=True)
+
+    sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
+    sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
+    custom_color_scale = ["#60a35a", "#FFA500", "#c72222"]
+    fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
+                        locationmode='ISO-3', locations='iso_code',
+                        color='temp_SUM',
+                        range_color=[0, 0.1],
+                        color_continuous_scale=custom_color_scale,
+                        hover_name='country', projection='natural earth', animation_frame='year',
+                        title='Variation de la température due aux gaz à effet de serre')
+    fig.update_layout(width=1000, height=800)
+    fig.update_layout(updatemenus=[dict(type='buttons', showactive=False,
+                                      buttons=[dict(label='Play',
+                                                    method='animate',
+                                                    args=[None, dict(frame=dict(duration=30, redraw=True), fromcurrent=True)]),
+                                              dict(label='Pause',
+                                                    method='animate',
+                                                    args=[[None], dict(frame=dict(duration=0, redraw=True), mode='immediate', transition=dict(duration=0))])])])
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Cette représentation graphique permet de voir les variations de température à l’échelle mondiale par année depuis 1851. A noter que les résultats viennent confirmer les données constatées dans les précédentes courbes."
+    "</p>"
+    , unsafe_allow_html=True)
 
   # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
