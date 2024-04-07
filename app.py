@@ -22,7 +22,7 @@ EUROPE_country_df_OWID_CO_CLEAN= pd.read_csv('datasets/EUROPE_country_df_OWID_CO
 
 ### Chargement des modèles de machine learning ###
 
-model_1 = joblib.load('machine_learning/model_1.joblib')
+model_1 = joblib.load('./model_1.joblib')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
