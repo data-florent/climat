@@ -8,6 +8,7 @@ import plotly.express as px
 from scipy import stats
 import joblib
 from prophet import Prophet
+from prophet.diagnostics import cross_validation, performance_metrics
 
 ### Importation des dataframes ###
 
