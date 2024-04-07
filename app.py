@@ -562,9 +562,9 @@ if page == pages[3] :
     metrique = st.selectbox('Sélectionnez la métrique :', ('mse', 'rmse', 'mae', 'mape', 'mdape', 'smape', 'coverage'))
 
     fig = plt.figure(figsize =(15,8))
-    sns.lineplot(x=forecast["ds"], y=forecast["yhat"], data=forecast, color= 'blue', label="Prédictions")
-    plt.ylabel("Nombre de catastrophes naturelles")
-    plt.xlabel("Années")
+    sns.lineplot(x=df_pm["horizon"], y=df_pm[metrique], data=df_pm, color= 'blue')
+    plt.ylabel(metrique)
+    plt.xlabel("Horizon (days)")
     plt.title(metrique)
     st.pyplot(fig, use_container_width=True)
 
