@@ -531,8 +531,8 @@ if page == pages[3] :
     st.plotly_chart(fig, use_container_width=True)
 
     fig = plt.figure(figsize =(15,8))
-    sns.lineplot(x=forecast["ds"], y=forecast["yhat"], data=forecast, color= '#ff81c0', label="Prédictions")
-    sns.lineplot(x=df_ML_P.iloc[660:]["ds"], y=df_ML_P.iloc[660:]["y"], data=df_ML_P.iloc[660:], color= '#53fca1', marker='o', linestyle='', label="Vraies valeurs")
+    sns.lineplot(x=forecast["ds"], y=forecast["yhat"], data=forecast, color= 'blue', label="Prédictions")
+    sns.lineplot(x=df_ML_P.iloc[660:]["ds"], y=df_ML_P.iloc[660:]["y"], data=df_ML_P.iloc[660:], color= 'black', marker='o', linestyle='', label="Vraies valeurs")
     plt.ylabel("Nombre de catastrophes naturelles")
     plt.xlabel("Années")
     plt.title("Nombre de catastrophes naturelles")
