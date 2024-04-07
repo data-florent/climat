@@ -559,6 +559,9 @@ if page == pages[3] :
     df_cv = cross_validation(model, initial='3650 days', period='180 days', horizon = '1825 days')
     df_pm = performance_metrics(df_cv)
 
+		st.markdown('<br><strong>Choix de la métrique</strong><br>', unsafe_allow_html=True)
+		metrique = st.selectbox('Sélectionnez la métrique :', (df_pm[['mse', 'rmse']]))
+
     st.markdown("<h3>4. Conclusion</h3>"
     "<p style='text-align: justify'>"
     "En conclusion, ce modèle présente des performances acceptables. Son processus de modélisation aboutit à un modèle de prédiction capable d'estimer le nombre de catastrophes naturelles sur une période donnée. Le modèle a toutefois tendance à fournir une plage étroite de valeurs : nous constatons qu’un nombre significatif de points noirs (correspondant aux valeurs réelles) se trouve très au-dessus ou très en dessous de la courbe de prédictions de Prophet."
