@@ -14,6 +14,8 @@ df_temp_catnat_1950 = pd.read_csv('datasets/df_temp_catnat_1950.csv', sep=',')
 df_temp_catnat_1950_month = pd.read_csv('datasets/df_temp_catnat_1950_month.csv', sep=',')
 world_df_OWID_CO_CLEAN= pd.read_csv('datasets/world_df_OWID_CO_CLEAN.csv', sep=',')
 df_global_annuel= pd.read_csv('datasets/df_global_annuel.csv', sep=',')
+df_nord_hem_mean_annuel= pd.read_csv('datasets/df_nord_hem_mean_annuel.csv', sep=',')
+df_sud_hem_mean_annuel= pd.read_csv('datasets/df_sud_hem_mean_annuel.csv', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -118,6 +120,24 @@ if page == pages[2] :
     plt.ylabel("Index de Variation de Température")
     plt.xlabel("Années")
     plt.title("Evolution des températures terrestres globales")
+    st.pyplot(fig, use_container_width=True)
+
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Les températures semblent globalement stables jusque dans les années 1940, puis un pic d'augmentation se dessine entre les années 1940 et 1950. A partir de cette période, les températures augmentent de manière constante."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Une des causes de ce réchauffement global est dûe aux activités humaines. Ainsi, les émissions de GES (gaz à effet de serre), entre autres, ont augmenté au cours du XXe siècle et conservent la même tendance au XXIe siècle. Ceci participe au réchauffement global planétaire. A noter que ce réchauffement n'est pas uniforme et peut varier entre les régions et les hémisphères."
+    "</p>"
+    , unsafe_allow_html=True)
+
+    fig = plt.figure(figsize =(15,8))
+    sns.lineplot(x=df_nord_hem_mean_annuel["Year"], y=df_nord_hem_mean_annuel["J-D"], data=df_nord_hem_mean_annuel, color= '#ff81c0', label="Hémisphère Nord")
+    sns.lineplot(x=df_sud_hem_mean_annuel["Year"], y=df_sud_hem_mean_annuel["J-D"], data=df_sud_hem_mean_annuel, color = '#53fca1', label="Hémisphère Sud")
+    plt.ylabel("Index de Variation de Température")
+    plt.xlabel("Années")
+    plt.title("Evolution des températures terrestre de l'hémisphère Nord et l'hémisphère Sud")
     st.pyplot(fig, use_container_width=True)
 
   # Sous-page Rôle des activités humaines
