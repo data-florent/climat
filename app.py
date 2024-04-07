@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
+from scipy import stats
 
 ### Importation des dataframes ###
 
@@ -221,11 +222,18 @@ if page == pages[2] :
     "<p style='text-align: justify'>"
     "Nous avons utilisé le test de Pearson pour déterminer le niveau de corrélation entre la variable température et chacune des quatre variables précédemment affichées dans les graphiques. Pour chacune des trois premières variables (nombre de catastrophes ; coût matériel des catastrophes ; nombre de personnes affectées), la p-valeur est inférieure à 0.05, donc on rejette H0 (x et y pas corrélées) et on accepte H1 (x et y corrélées). Il existe ainsi une corrélation positive entre les variables."
     "</p>"
-    "\n\n"
+    , unsafe_allow_html=True)
+
+    # Test statistique de corrélation entre la température et le nombre de catastrophes naturelles
+    # Utilisation du test de Pearson
+    x= df_temp_catnat_1950['J-D']
+    y= df_temp_catnat_1950['Nombre']
+    st.write(stats.pearsonr(x,y))
+
+    st.markdown(
     "<p style='text-align: justify'>"
     "A l’inverse, pour la quatrième variable (nombre de décès), la p-valeur est supérieure à 0.05, donc l'hypothèse H0 (x et y pas corrélées) n'est pas rejetée. On ne retient donc pas de corrélation entre les deux variables température / nombre de décès."
     "</p>"
-    "\n\n"
     , unsafe_allow_html=True)
 
 # Page Prédictions
