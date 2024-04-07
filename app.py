@@ -516,7 +516,19 @@ if page == pages[3] :
     model.fit(df_ML_P.iloc[660:])
     future_dates = model.make_future_dataframe(periods=60, freq='MS')
     forecast = model.predict(future_dates)
-    model.plot(forecast, uncertainty=True)
+    #model.plot(forecast, uncertainty=True)
+
+    fig = px.line(forecast,
+    x='ds',
+    y='yhat',
+    labels={'ds': 'Mois', 'yhat': 'Nombre de catastrophes'},
+    title='Prédiction du nombre de catastrophes naturelles (2022-2026)',)
+    fig.update_layout(
+    xaxis=dict(title='Année'),
+    yaxis=dict(title='Nombre de catastrophes naturelles '),
+    width=1000,
+    height=500,)
+    st.plotly_chart(fig, use_container_width=True)
 
   # Sous-page Températures
   if pred_page == pred2:
