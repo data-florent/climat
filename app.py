@@ -7,22 +7,20 @@ import seaborn as sns
 import plotly.express as px
 from scipy import stats
 import joblib
+from prophet import Prophet
 
 ### Importation des dataframes ###
 
 country_df_OWID_CO_CLEAN = pd.read_csv('datasets/country_df_OWID_CO_CLEAN.csv', sep=',')
 df_temp_catnat_1950 = pd.read_csv('datasets/df_temp_catnat_1950.csv', sep=',')
 df_temp_catnat_1950_month = pd.read_csv('datasets/df_temp_catnat_1950_month.csv', sep=',')
+df_ML = pd.read_csv('datasets/df_temp_catnat_1950_month.csv', sep=',')
 world_df_OWID_CO_CLEAN= pd.read_csv('datasets/world_df_OWID_CO_CLEAN.csv', sep=',')
 df_global_annuel= pd.read_csv('datasets/df_global_annuel.csv', sep=',')
 df_nord_hem_mean_annuel= pd.read_csv('datasets/df_nord_hem_mean_annuel.csv', sep=',')
 df_sud_hem_mean_annuel= pd.read_csv('datasets/df_sud_hem_mean_annuel.csv', sep=',')
 continent_df_OWID_CO_CLEAN= pd.read_csv('datasets/continent_df_OWID_CO_CLEAN.csv', sep=',')
 EUROPE_country_df_OWID_CO_CLEAN= pd.read_csv('datasets/EUROPE_country_df_OWID_CO_CLEAN.csv', sep=',')
-
-### Chargement des modèles de machine learning ###
-
-#model_1 = joblib.load('model_1.pkl')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -483,7 +481,42 @@ if page == pages[3] :
   if pred_page == pred1:
     st.subheader("Catastrophes naturelles")
   
-  
+    st.markdown("<h3>1. Introduction</h3>"
+    "<p style='text-align: justify'>"
+    "L'objectif principal de cette analyse est de développer un modèle de prédiction capable d'estimer le nombre de catastrophes naturelles sur une période donnée. Pour ce faire nous avons utilisé des données provenant du dataset EMDAT recensant les catastrophes naturelles."
+    "</p>"
+    "\n\n"
+    , unsafe_allow_html=True)
+
+    st.markdown("<h3>2. Traitement des données</h3>"
+    "<p style='text-align: justify'>"
+    "L'objectif principal de cette analyse est de développer un modèle de prédiction capable d'estimer le nombre de catastrophes naturelles sur une période donnée.  Les données sont triées chronologiquement et nettoyées pour être appliquées au modèle Prophet (librairie qui permet la prévision des données de séries temporelles en tenant compte notamment des variations saisonnières)."
+    "</p>"
+    "\n\n"
+    , unsafe_allow_html=True)
+
+    st.markdown("<h3>3. Modélisation</h3>"
+    "<p style='text-align: justify'>"
+    "Le modèle Prophet est entraîné sur une période de 17 ans (2005-2021) et utilisé pour faire des prédictions sur les 5 années suivantes (2022-2026). Les prédictions sont ensuite visualisées avec des intervalles de confiance."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Sur le graphique de la librairie Prophet, les points noirs représentent les vraies valeurs (nombres mensuels de catastrophes naturelles). La ligne bleu foncé représente la prédiction du modèle et le nuage bleu ciel est la marge d'incertitude (fourchette basse et fourchette haute des prédictions)."
+    "</p>"
+    , unsafe_allow_html=True)
+
+    df_ML = df_ML.sort_values(['Year', 'Month'], ascending=True).reset_index()
+    df_ML_P = df_ML[['Year', 'Month', 'Nombre']]
+    df_ML_P['Day'] = 1
+    ds = pd.to_datetime(df_ML_P[["Year", "Month", "Day"]])
+    df_ML_P['ds'] = ds
+    df_ML_P['y'] = df_ML_P['Nombre']
+    df_ML_P = df_ML_P[['ds', 'y']]
+    model = Prophet(interval_width=0.95)
+    model.fit(df_ML_P.iloc[660:])
+    future_dates = model.make_future_dataframe(periods=60, freq='MS')
+    forecast = model.predict(future_dates)
+    model.plot(forecast, uncertainty=True)
 
   # Sous-page Températures
   if pred_page == pred2:
