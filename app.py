@@ -568,6 +568,13 @@ if page == pages[3] :
     plt.title(metrique)
     st.pyplot(fig, use_container_width=True)
 
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Pour la MAPE, on peut observer que l'écart entre les vraies valeurs et les prédictions est d'environ 25 % pour les 2 premières années, puis d'environ 35 % pour les 3 années suivantes."
+    "</p>"
+    "\n\n"
+    , unsafe_allow_html=True)
+
     st.markdown("<h3>4. Conclusion</h3>"
     "<p style='text-align: justify'>"
     "En conclusion, ce modèle présente des performances acceptables. Son processus de modélisation aboutit à un modèle de prédiction capable d'estimer le nombre de catastrophes naturelles sur une période donnée. Le modèle a toutefois tendance à fournir une plage étroite de valeurs : nous constatons qu’un nombre significatif de points noirs (correspondant aux valeurs réelles) se trouve très au-dessus ou très en dessous de la courbe de prédictions de Prophet."
