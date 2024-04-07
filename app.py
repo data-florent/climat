@@ -113,6 +113,16 @@ if page == pages[2] :
   if dataviz_page == viz2:
     st.subheader("Rôle des activités humaines")
     
+    st.markdown("<h3>1. Evolution des émissions de CO2 à l'échelle mondiale et par pays</h3>"
+    "<p style='text-align: justify'>"
+    "Les activités humaines ont un impact important sur le réchauffement climatique. En effet, la combustion des énergies fossiles, l'utilisation des engrais dans le cadre de l'agriculture, mais également les transports et l'industrie sont source d'émissions de GES qui viennent perturber l'équilibre climatique."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "On ne présente plus le co2, principal gaz à effet de serre persistant et qui constitue un indicateur de contexte majeur concernant l'enjeu du changement climatique."
+    "</p>"
+    , unsafe_allow_html=True)
+
     fig = px.line(world_df_OWID_CO_CLEAN,
     x='year',
     y='co2',
@@ -124,6 +134,16 @@ if page == pages[2] :
     )
     st.plotly_chart(fig, use_container_width=True)
     
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Ce graphique nous montre une certaine stabilité des émissions de dioxyde de carbone à l'échelle mondiale entre 1750 et 1875. Ces dernières étaient alors proches de 0."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "C'est à partir des années 1875 qu'on observe une augmentation des émissions avec l'ouverture du premier âge industriel pour atteindre 5 milliards de tonnes en 1950. A partir de cette date, la courbe est éloquente et la croissance des émissions est exponentielle : elle culminera à 37 milliards de tonnes en 2021. Il convient de noter une relative accalmie en 2020 (-2 milliards de tonnes versus 2019) qui s'explique par la pandémie de COVID-19. Toutefois, le niveau de 2019 sera rattrapé dès 2021."
+    "</p>"
+    , unsafe_allow_html=True)
+
     fig = px.line(country_df_OWID_CO_CLEAN,
     x='year',
     y='co2',
@@ -136,6 +156,23 @@ if page == pages[2] :
     )
     st.plotly_chart(fig, use_container_width=True)
 
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Ce graphique nous montre comment ont évolué les émissions de dioxyde de carbone de 1750 à nos jours et ceci à travers le monde."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "On constate une légère hausse des émissions de CO2 de l'Angleterre (courbe orange), premier pays à avoir connu sa révolution industrielle, dès les années 1850. L’Angleterre est dépassée par les Etats-Unis (courbe bleu ciel) à partir des années 1900 qui connaissent alors une envolée vertigineuse jusque dans les années 2005 où une baisse s'opère alors jusqu'en 2020 où les émissions retrouvent leur niveau des années 1990."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Sur la même période, la Chine (courbe violette) récupère la première place avec des émissions de gaz à effet de serre qui augmentent de manière exponentielle pour arriver de nos jours à 12M de tonnes, soit deux fois plus que les Etats-Unis. L'Inde (courbe rose) se place en troisième position avec 2,7M de tonnes."
+    "</p>"
+    , unsafe_allow_html=True)
+
+    st.markdown("<h3>2. Répartition de l'origine des GES (gaz à effet de serre)</h3>"
+    , unsafe_allow_html=True)
+
     df_repartition = world_df_OWID_CO_CLEAN[world_df_OWID_CO_CLEAN.year >= 2000]
     df_repartition.rename(columns={"cement_co2": "Ciment", "coal_co2": "Charbon", "flaring_co2": "Torchage", "gas_co2": "Gaz", "oil_co2": "Pétrole"}, inplace=True) 
     graph = df_repartition[['year', 'Ciment', 'Charbon', 'Torchage', 'Gaz', 'Pétrole']].plot.barh(
@@ -145,6 +182,15 @@ if page == pages[2] :
     xlabel="Emissions en millions de tonnes",
     stacked=True).figure
     st.pyplot(graph, use_container_width=True)
+
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Nous constatons que la source la plus importante d’émissions de GES est incontestablement le charbon, suivi de près par le pétrole. Le gaz arrive en troisième position et ne représente que la moitié des émissions liées au pétrole. Arrivent enfin le ciment et le torchage, qui ne constituent qu’une très faible partie des émissions."
+    "</p>"
+    , unsafe_allow_html=True)
+
+    st.markdown("<h3>3. Contribution des pays au réchauffement climatique</h3>"
+    , unsafe_allow_html=True)
 
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
@@ -157,6 +203,23 @@ if page == pages[2] :
                     title='Part (en %) de contribution au réchauffement climatique, basée sur les émissions de GES')
     st.plotly_chart(fig, use_container_width=True)
 
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Les Etats-Unis s'imposent comme le premier pays contributeur au réchauffement climatique dès 1851."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Des pays comme la Russie, le Brésil, l'Inde et la Chine deviennent également des contributeurs importants après la seconde guerre mondiale. La Chine en particulier est le pays dont la progression est la plus spectaculaire."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Enfin, certaines régions du monde contribuent peu au réchauffement climatique, notamment l'Afrique."
+    "</p>"
+    , unsafe_allow_html=True)
+
+    st.markdown("<h3>4. Emissions de GES par individu selon les pays</h3>"
+    , unsafe_allow_html=True)
+
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[(sorted_country_df_OWID_CO_CLEAN['year']>=1990)&(sorted_country_df_OWID_CO_CLEAN['year']<=2019)]
     fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
                     locationmode='country names', locations='country',
@@ -166,6 +229,16 @@ if page == pages[2] :
                     hover_name='country', projection='natural earth', animation_frame='year',
                     title='Emissions de GES par individu selon les pays')
     st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "Chaque citoyen du monde n'émet pas la même quantité de GES. Les personnes qui émettent le plus de GES proviennent le plus souvent de pays riches (Canada, Australie, Etats-Unis, etc.) et/ou de pays dont l'économie est basée sur les énergies fossiles (Vénézuela, Libye, Turkménistan, etc.)."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "A l'inverse, chaque citoyen indien émet très peu de GES. Cela pourrait s'expliquer par la pauvreté et le faible niveau de vie en Inde, et donc par la faible consommation d'énergie rapportée au nombre d'habitants de ce pays."
+    "</p>"
+    , unsafe_allow_html=True)
 
   # Sous-page Catastrophes naturelles
   if dataviz_page == viz3:
@@ -238,7 +311,7 @@ if page == pages[2] :
     # Utilisation du test statistique de Pearson
     x= df_temp_catnat_1950['J-D']
     y= df_temp_catnat_1950['Total Deaths']
-    st.write("Exemple du test de Pearson entre la température et le nombre de décès :", stats.pearsonr(x,y))
+    st.write("Test de Pearson entre la température et le nombre de décès :", stats.pearsonr(x,y))
 
 # Page Prédictions
 if page == pages[3] : 
