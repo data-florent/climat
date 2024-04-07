@@ -170,7 +170,7 @@ if page == pages[2] :
   if dataviz_page == viz3:
     st.subheader("Catastrophes naturelles")
 
-    fig, axes = plt.subplots(2, 2, sharey=True)
+    fig, axes = plt.subplots(2, 2, figsize=(16, 10) sharey=True)
     plt.setp(axes, ylabel='label')
     fig.suptitle("Variables en fonction de l'évolution de la température moyenne annuelle de 1950 à 2022 (période de référence: 1951-1980)")
 
