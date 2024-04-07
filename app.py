@@ -561,6 +561,13 @@ if page == pages[3] :
     st.markdown('<br><strong>Choix de la métrique</strong><br>', unsafe_allow_html=True)
     metrique = st.selectbox('Sélectionnez la métrique :', ('mse', 'rmse', 'mae', 'mape', 'mdape', 'smape', 'coverage'))
 
+    fig = plt.figure(figsize =(15,8))
+    sns.lineplot(x=forecast["ds"], y=forecast["yhat"], data=forecast, color= 'blue', label="Prédictions")
+    plt.ylabel("Nombre de catastrophes naturelles")
+    plt.xlabel("Années")
+    plt.title(metrique)
+    st.pyplot(fig, use_container_width=True)
+
     st.markdown("<h3>4. Conclusion</h3>"
     "<p style='text-align: justify'>"
     "En conclusion, ce modèle présente des performances acceptables. Son processus de modélisation aboutit à un modèle de prédiction capable d'estimer le nombre de catastrophes naturelles sur une période donnée. Le modèle a toutefois tendance à fournir une plage étroite de valeurs : nous constatons qu’un nombre significatif de points noirs (correspondant aux valeurs réelles) se trouve très au-dessus ou très en dessous de la courbe de prédictions de Prophet."
