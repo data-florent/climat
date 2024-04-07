@@ -558,6 +558,7 @@ if page == pages[3] :
 
     df_cv = cross_validation(model, initial='3650 days', period='180 days', horizon = '1825 days')
     df_pm = performance_metrics(df_cv)
+    st.dataframe(df_pm.head())
     st.dataframe(df_pm.tail())
     st.markdown('<br><strong>Choix de la métrique</strong><br>', unsafe_allow_html=True)
     metrique = st.selectbox('Sélectionnez la métrique :', ('mse', 'rmse', 'mae', 'mape', 'mdape', 'smape', 'coverage'))
@@ -566,7 +567,7 @@ if page == pages[3] :
     sns.lineplot(x=df_pm.index, y=df_pm[metrique], data=df_pm, color= 'blue')
     plt.ylabel(metrique)
     plt.xlabel("Horizon (days)")
-    plt.xticks()
+    plt.xticks([181,1825])
     plt.title(metrique)
     st.pyplot(fig, use_container_width=True)
 
