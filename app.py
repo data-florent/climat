@@ -227,13 +227,18 @@ if page == pages[2] :
     # Utilisation du test statistique de Pearson
     x= df_temp_catnat_1950['J-D']
     y= df_temp_catnat_1950['Nombre']
-    st.write("Test de Pearson entre la température et le nombre de catastrophes naturelles :", stats.pearsonr(x,y))
+    st.write("Exemple du test de Pearson entre la température et le nombre de catastrophes naturelles :", stats.pearsonr(x,y))
 
     st.markdown(
     "<p style='text-align: justify'>"
     "A l’inverse, pour la quatrième variable (nombre de décès), la p-valeur est supérieure à 0.05, donc l'hypothèse H0 (x et y pas corrélées) n'est pas rejetée. On ne retient donc pas de corrélation entre les deux variables température / nombre de décès."
     "</p>"
     , unsafe_allow_html=True)
+
+    # Utilisation du test statistique de Pearson
+    x= df_temp_catnat_1950['J-D']
+    y= df_temp_catnat_1950['Total Deaths']
+    st.write("Exemple du test de Pearson entre la température et le nombre de décès :", stats.pearsonr(x,y))
 
 # Page Prédictions
 if page == pages[3] : 
