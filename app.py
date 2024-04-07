@@ -169,6 +169,37 @@ if page == pages[2] :
   # Sous-page Catastrophes naturelles
   if dataviz_page == viz3:
     st.subheader("Catastrophes naturelles")
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10), sharey=True)
+    plt.setp(axes, ylabel='label')
+    fig.suptitle("Variables en fonction de l'évolution de la température moyenne annuelle de 1950 à 2022 (période de référence: 1951-1980)")
+
+    # Nombre de catastrophes naturelles
+    sns.regplot(ax=axes[0,0], data=df_temp_catnat_1950, x="Nombre", y="J-D")
+    axes[0,0].set_ylabel('Evolution de la température en °C vs période de référence')
+    axes[0,0].set_xlabel('Nombre annuel de catastrophes naturelles')
+    axes[0,0].set_title('Nombre de catastrophes')
+
+    # Dégâts
+    sns.regplot(ax=axes[0,1], data=df_temp_catnat_1950, x="Total Damage ('000 US$)", y="J-D")
+    axes[0,1].set_ylabel('')
+    axes[0,1].set_xlabel('Montant annuel des dégâts en k$')
+    axes[0,1].set_title('Montant des dégâts')
+
+    # Personnes affectées
+    sns.regplot(ax=axes[1,0], data=df_temp_catnat_1950, x="Total Affected", y="J-D")
+    axes[1,0].set_ylabel('Evolution de la température en °C vs période de référence')
+    axes[1,0].set_xlabel('Nombre annuel de personnes affectées')
+    axes[1,0].set_title('Personnes affectées')
+
+    # Décès
+    sns.regplot(ax=axes[1,1], data=df_temp_catnat_1950, x="Total Deaths", y="J-D")
+    axes[1,1].set_ylabel('')
+    axes[1,1].set_xlabel('Nombre annuel de décès')
+    axes[1,1].set_title('Décès');
+
+    st.pyplot(fig, use_container_width=True)
+
     st.write("texte")
 
 # Page Prédictions
