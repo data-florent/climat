@@ -140,6 +140,34 @@ if page == pages[2] :
     plt.title("Evolution des températures terrestre de l'hémisphère Nord et l'hémisphère Sud")
     st.pyplot(fig, use_container_width=True)
 
+    st.markdown(
+    "<p style='text-align: justify'>"
+    "L'augmentation des températures est plus importante aujourd'hui dans l'hémisphère nord que dans l’hémisphère sud. Il s’avère qu’au XXe siècle, les variations de températures étaient assez similaires partout sur le globe."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "C'est à partir de la fin du XXe siècle que l'hémisphère nord dépasse l'hémisphère sud en termes d’augmentation de températures. Ce dépassement correspond également à une augmentation de plus en plus forte des températures dans l'hémisphère nord."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "En outre, l'hémisphère sud semble démarrer son ascension dans les années 1940, soit 20 ans après l'hémisphère nord."
+    "</p>"
+    "\n\n"
+    "<p style='text-align: justify'>"
+    "Il pourrait y avoir plusieurs explications à cette différence entre nord et sud : "
+    "<ul>"
+    "<li>les activités humaines sont plus condensées sur l'hémisphère nord ;</li>"
+    "<li>la proportion de terres émergées est plus importante au nord ;</li>"
+    "<li>-	les terres se réchauffent et refroidissent plus rapidement que l'eau, ce qui peut influencer les différences de température entre les deux hémisphères.</li>"
+    "</ul>"
+    "</p>"
+    , unsafe_allow_html=True)
+
+    cor = country_df_OWID_CO_CLEAN[["temp_SUM",'co2',"primary_energy_consumption",'gdp','population']].corr()
+    fig, ax = plt.subplots(figsize = (10,10))
+    sns.heatmap(cor, annot = True, ax = ax, cmap = "coolwarm")
+    st.pyplot(fig, use_container_width=True)
+
   # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
     st.subheader("Rôle des activités humaines")
