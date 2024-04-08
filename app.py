@@ -95,7 +95,7 @@ if page == pages[0] :
 if page == pages[1] : 
   st.header("Nettoyage des données")
   st.write("<p style='text-align: justify'>"
-  "Texte 1"
+  "Après analyse des données fournies une première étape de nettoyage des données à été indispensable pour exploiter le jeu de données."
   "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
