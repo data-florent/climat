@@ -96,6 +96,9 @@ if page == pages[1] :
   st.header("Nettoyage des données")
   st.write("<p style='text-align: justify'>"
   "Après analyse des données fournies une première étape de nettoyage des données à été indispensable pour exploiter le jeu de données."
+  st.markdown("<h3>1. Données de la Nasa</h3>"
+	"<p style='text-align: justify'>"
+	"Plusieurs objectifs ont été fixés dans le cadre de ce projet :"
   "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
