@@ -96,9 +96,11 @@ if page == pages[1] :
   st.header("Nettoyage des données")
   st.write("<p style='text-align: justify'>"
   "Après analyse des données fournies une première étape de nettoyage des données à été indispensable pour exploiter le jeu de données."
-  st.markdown("<h3>1. Données de la Nasa</h3>"
+  "</p>"
+  "\n\n"
+  st.markdown("Données de la Nasa")
 	"<p style='text-align: justify'>"
-	"Plusieurs objectifs ont été fixés dans le cadre de ce projet :"
+	"Dans un premier temps, le Dataset df_global_mean_2007_2016 a été divisé en trois Datasets. En effet, ce dernier comporte les variations de températures entre 2007 et 2016 calculées avec trois outils de mesures différents."
   "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
