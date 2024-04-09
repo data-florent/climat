@@ -93,12 +93,14 @@ if page == pages[0] :
 
 
 
+
+
 # Page Nettoyage des données
 if page == pages[1] : 
   st.header("Nettoyage des données")
   st.subheader("Données de la NASA")
   st.write("<p style='text-align: justify'>"
-  "Après analyse des données fournies une première étape de nettoyage des données à été indispensable pour exploiter le jeu de données."
+  "Après analyse des données fournies une première étape de nettoyage a été indispensable pour exploiter le jeu de données."
   "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
@@ -109,6 +111,7 @@ if page == pages[1] :
   "Les caractères spéciaux contenus dans le Dataset ont été remplacés par des NaN. Ensuite, les lignes contenant des valeurs manquantes ont été supprimées et les colonnes de type « object » ont été transformées en « float ». A noter que ces étapes de nettoyage ont été dupliquées sur les datasets reprenant les données pour les hémisphères Nord et Sud."
   "</p>"
   , unsafe_allow_html=True)
+	
   st.dataframe(df_nord_hem_mean_annuel.head())
 
   st.write("<p style='text-align: justify'>"
@@ -134,9 +137,25 @@ if page == pages[1] :
   "Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes."
   "</p>"
   , unsafe_allow_html=True) 
-
 	
   st.dataframe(country_df_OWID_CO_CLEAN.head())
+
+  st.subheader("Données EMDAT")
+  st.write("<p style='text-align: justify'>"
+  "Texte 1"
+  "</p>"
+  "\n\n"
+  "<p style='text-align: justify'>"
+  "Texte 2"
+  "</p>"
+  , unsafe_allow_html=True) 
+	
+  st.dataframe(df_temp_catnat_1950.head())
+
+
+
+
+
 
 
 # Page Visualisations
