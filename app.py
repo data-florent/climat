@@ -102,14 +102,32 @@ if page == pages[1] :
   "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
-  "Dans un premier temps, le Dataset df_global_mean_2007_2016 a été divisé en trois Datasets. En effet, ce dernier comporte les variations de températures entre 2007 et 2016 calculées avec trois outils de mesures différents."
+  "Dans un premier temps, le Dataset a été divisé en trois Datasets. En effet, ce dernier comporte les variations de températures entre 2007 et 2016 calculées avec trois outils de mesures différents."
   "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
   "Les caractères spéciaux contenus dans le Dataset ont été remplacés par des NaN. Ensuite, les lignes contenant des valeurs manquantes ont été supprimées et les colonnes de type « object » ont été transformées en « float ». A noter que ces étapes de nettoyage ont été dupliquées sur les datasets reprenant les données pour les hémisphères Nord et Sud."
   "</p>"
   , unsafe_allow_html=True)
+  st.dataframe(df_nord_hem_mean_annuel.head())
 
+  st.write("<p style='text-align: justify'>"
+  "Une fois les données nettoyées, des datasets de travail ont ensuite été créés en fonction de la temporalité et de la zone (au global et par hémisphère) :"
+  "</p>"
+  "\n\n"
+  "<p style='text-align: justify'>"
+  "Dataset température moyenne par mois, Dataset température moyenne par saison, Dataset température moyenne annuelle, Dataset températures moyennes saisonnières par décennies (à partir des années 1880 à 2020). Dataset température moyenne annuelle par latitude, Dataset température moyenne annuelle par hémisphère, Dataset température moyenne par pays."
+  "</p>"
+  "\n\n"
+  "<p style='text-align: justify'>"
+  "Ainsi, un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
+  "</p>"
+  , unsafe_allow_html=True) 
+	
+
+
+
+	
   st.dataframe(country_df_OWID_CO_CLEAN.head())
 
 
