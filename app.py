@@ -125,7 +125,12 @@ if page == pages[1] :
   , unsafe_allow_html=True) 
 	
 
-
+  st.subheader("Données OWID")
+  st.write("<p style='text-align: justify'>"
+  "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. Les lignes ne contenant pas de code ISO sont des régions ou des continents par exemple. Le reste des données manquantes ont été remplacées par “0”."
+  "Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes."
+  "</p>"
+  "\n\n"
 
 	
   st.dataframe(country_df_OWID_CO_CLEAN.head())
