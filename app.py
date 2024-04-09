@@ -94,6 +94,7 @@ if page == pages[0] :
 # Page Nettoyage des données
 if page == pages[1] : 
   st.header("Nettoyage des données")
+	st.subheader("Données de la NASA")
   st.write("<p style='text-align: justify'>"
   "Après analyse des données fournies une première étape de nettoyage des données à été indispensable pour exploiter le jeu de données."
   "</p>"
