@@ -137,13 +137,13 @@ if page == pages[1] :
   "Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes."
   "</p>"
   , unsafe_allow_html=True) 
-  st.dataframe(country_df_OWID_CO_CLEAN.tail())
+  st.dataframe(country_df_OWID_CO_CLEAN.head())
   st.write("<p style='text-align: justify'>"
   "Un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
   "</p>"
   "\n\n"
   , unsafe_allow_html=True)    
-  st.dataframe(df_countryLatLong.csv)
+  st.dataframe()
 
 
 
