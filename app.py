@@ -99,6 +99,9 @@ if page == pages[0] :
 # Page Nettoyage des données
 if page == pages[1] : 
   st.header("Nettoyage des données")
+	
+# Nettoyage DONNEE NASA 
+#text
   st.subheader("1. Données de la NASA")
   st.write("<p style='text-align: justify'>"
   "Après analyse des données fournies, une première étape de nettoyage a été indispensable pour exploiter le jeu de données."
@@ -112,59 +115,63 @@ if page == pages[1] :
   "Dans un premier temps, les Datasets de la NASA ont été divisé en plusieurs Datasets différents réparti en fonction de la temporalité et de la zone et des outils de mesures."
   "</p>"
   , unsafe_allow_html=True)
-	
+# affichage du dataframe
   st.dataframe(df_global_annuel.head())
-
+#text
   st.write("<p style='text-align: justify'>"
   "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux. les caractères spéciaux ont donc été remplacés par des NaN. Les lignes contenant des valeurs manquantes ont été supprimées et les colonnes de type « object » ont été transformées en « float ». A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets."
   "</p>"
   "\n\n"
   "Par exemple:"
   , unsafe_allow_html=True) 
-
+# affichage du code
   st.code('''
   # supprimer les caractere speciaux ***, en les transformant en NaN
   df_global_mean.replace('***', np.nan, inplace=True)
-  
+
   # Supprimez les lignes contenant NaN
   df_global_mean.dropna(inplace=True)
 
   # transformer les colonnes object en float
   df_global_mean['Jan'] = df_global_mean['Jan'].astype(float)
   ''', language='python')
-
-	   
+#text  
   st.write("<p style='text-align: justify'>"
   "Une fois les données nettoyées, des datasets de travail ont ensuite été créés en fonction des relevé de température moyenne par mois, par saison, annuelle, saisonnières, par latitude, par hémisphère, par pays et des outils de mesures (AIRSv6, AIRSv7, GHCNv4ERSSTv5)."
   "</p>"
   "\n\n"
   , unsafe_allow_html=True) 
-
   "\n\n"
 
+
+	
+### Nettoyage DONNEES OWID
   st.subheader("2. Données OWID")
+#text
   st.write("<p style='text-align: justify'>"
   "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. Les lignes ne contenant pas de code ISO sont des régions ou des continents par exemple. Le reste des données manquantes ont été remplacées par “0”."
   "</p>"
   "\n\n"  
   , unsafe_allow_html=True) 
-	
+# affichage du code
   st.code('''
   # remplacer les NAs
   df_OWID_CO_CLEAN = df_OWID_CO['iso_code'].fillna('AUTRE')
   df_OWID_CO_CLEAN = df_OWID_CO.fillna(0)
   ''', language='python')
-	
+#text	
   st.write("<p style='text-align: justify'>"
   "Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes."
   "</p>"
   , unsafe_allow_html=True) 
+# affichage du code
   st.code('''
   # Créer la nouvelle colonne 'temp_SUM' avec la somme des colonnes temperatures = equivaut à la colonne 'temperature_change_from_ghg'
   df_OWID_CO_CLEAN['temp_SUM'] = df_OWID_CO_CLEAN[['temperature_change_from_ch4','temperature_change_from_co2','temperature_change_from_n2o']].sum(axis=1)
   ''', language='python')
-	
+# affichage du dataframe
   st.dataframe(country_df_OWID_CO_CLEAN.head())
+#text
   st.write("<p style='text-align: justify'>"
   "Un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
   "</p>"
@@ -173,37 +180,60 @@ if page == pages[1] :
   "</p>"
   "\n\n"
   , unsafe_allow_html=True)    
+# affichage du dataframe des latitudes et longitude
   st.dataframe()
 
 
-
+### Nettoyage DONNEES EMDAT
   st.subheader("3. Données EMDAT")
+# text
   st.write("<p style='text-align: justify'>"
   "Enfin, nous avons importé le Dataset EMDAT recensant les catastrophes naturelles. Ce dernier a, lui aussi, fait l’objet d’une analyse de ses données pour être ensuite nettoyées. "
   "\n\n"
+  , unsafe_allow_html=True) 
+# affichage du dataframe 	
+  st.dataframe(df_temp_catnat_1950.head())
+  "\n\n"
+# text	
+  st.write("<p style='text-align: justify'>"
   "La présence de doublons et de valeurs manquantes a été vérifiée. Nous avons fait le choix de limiter le Dataset aux colonnes pertinentes, c’est-à-dire celles où les données manquantes sont peu nombreuses et permettront d’en tirer des analyses. A noter que certains noms de colonnes ont également été modifiés (afin d’en améliorer la lecture) et que les valeurs manquantes ont été remplacées par la médiane."
   "</p>"
   , unsafe_allow_html=True) 
-	
-  st.dataframe(df_temp_catnat_1950.head())
-  "\n\n"
+# affichage du code
+  st.code('''
+  # LIMITATION du dataframe aux colonnes pertinentes, celles où les données manquantes sont peu nombreuses ET permettront des analyses
+  df_EMDAT_CLEAN = df_emdat[["Disaster Group", "Disaster Subgroup", "Disaster Type", "Disaster Subtype", "ISO", "Country", "Subregion", "Region", "Start Year", "Total Deaths", "Total Affected", "Total Damage ('000 US$)"]]
+  ''', language='python')
+# text
   st.write("<p style='text-align: justify'>"
   "Plusieurs Datasets de travail ont ensuite été créés pour l’analyse, reprenant le nombre de catastrophes naturelles par année ainsi que la variation de température, le nombre total de morts, le nombre total de personnes affectées, le coût chiffré en milliers de dollars US induit, le nombre de catastrophes naturelles."
-  "</p>"
-  "\n\n"
+  "</p>" , unsafe_allow_html=True) 
+# text
+  st.write("<p style='text-align: justify'>"
   "Plusieurs dataset ont été créé spécialement pour les modèles de Machine Learning, dont un seul sera présenté ici. Pour ce faire, le choix a été fait de supprimer les catastrophes pour lesquelles le mois n’est pas renseigné (nous gardons tout de même 98,4% des données initialement présentes dans le fichier des catastrophes naturelles dans le monde depuis 1950). "
-  "</p>"
+  "</p>", unsafe_allow_html=True) 
   "\n\n"
+# text
+  st.write("<p style='text-align: justify'>"
   "A noter que les valeurs manquantes ont été remplacées par des 0 (pas de catastrophe naturelle). Également, les lignes les plus récentes (2022 et 2023) ont été supprimées car il fallait que l’intégralité des informations soit disponible (température, nombre de catastrophes mensuelles, CO2 et population)."
-  "</p>"
+  "</p>", unsafe_allow_html=True) 
   "\n\n"
+# affichage du code
+  st.code('''
+  # Changement du nom de la colonne 'Start Year' en 'Year'
+  df_EMDAT_CLEAN = df_EMDAT_CLEAN.rename({'Start Year':'Year'}, axis=1)
+  # CHOIX DE LA MEDIANE POUR REMPLACER LES VALEURS MANQUANTES DANS LES 3 VARIABLES TOTAL AFFECTED, TOTAL DEATHS ET TOTAL DAMAGE
+  df_EMDAT_CLEAN = df_EMDAT_CLEAN.fillna(df_EMDAT_CLEAN.median())
+  ''', language='python')
+# text
+  st.write("<p style='text-align: justify'>"
   "Il contient par année, le mois, la variation de température, le nombre de catastrophes mensuelles, la population, les émissions de CO2 en millions de tonnes, le cumul des émissions de CO2 en millions de tonnes."
-  "</p>"
+  "</p>", unsafe_allow_html=True) 
   "\n\n"
   "\n\n"
-   , unsafe_allow_html=True) 
 
-  st.subheader("CONCULSION")
+### CONCLUSION
+  st.subheader("Conclusion")
   st.write("<p style='text-align: justify'>"
   "Les datasets nouvellement créés sont sauvegardés sur notre drive commun, dans un dossier intitulé “DATASETS_CLEAN”, pour être utilisés par tous dans des feuilles de code séparées (essentiellement la feuille “Code_Commun”, mais aussi des feuilles individuelles permettant à chacun de pratiquer et d’expérimenter de son côté)."
   "\n\n"
