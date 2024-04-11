@@ -120,12 +120,11 @@ if page == pages[1] :
   "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
-  "Une fois les données nettoyées, des datasets de travail ont ensuite été créés en fonction des relevé de température moyenne par mois, par saison, annuelle, saisonnières, par latitude, par hémisphère, par pays et des outils de mesures (GLO_TempAno_AIRSv6 ; GLO_TempAno_AIRSv7 ; GLO_TempAno_GHCNv4ERSSTv5.)"
+  "Une fois les données nettoyées, des datasets de travail ont ensuite été créés en fonction des relevé de température moyenne par mois, par saison, annuelle, saisonnières, par latitude, par hémisphère, par pays et des outils de mesures (AIRSv6, AIRSv7, GHCNv4ERSSTv5)."
   "</p>"
   "\n\n"
   , unsafe_allow_html=True) 
 
-  "</p>"
   "\n\n"
 
   st.subheader("2. Données OWID")
@@ -142,25 +141,46 @@ if page == pages[1] :
   "Un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
   "</p>"
   "\n\n"
+  "Les lignes ont ensuite été filtrées par pays, par régions, par continents, par régions économiques et à l’échelle mondiale via la colonne « country » et stockées dans de nouveaux Datasets de travail."
+  "</p>"
+  "\n\n"
   , unsafe_allow_html=True)    
   st.dataframe()
 
 
 
-  st.subheader("Données EMDAT")
+  st.subheader("3. Données EMDAT")
   st.write("<p style='text-align: justify'>"
-  "Un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
-  "</p>"
+  "Enfin, nous avons importé le Dataset EMDAT recensant les catastrophes naturelles. Ce dernier a, lui aussi, fait l’objet d’une analyse de ses données pour être ensuite nettoyées. "
   "\n\n"
-  "<p style='text-align: justify'>"
-  "Texte 2"
+  "La présence de doublons et de valeurs manquantes a été vérifiée. Nous avons fait le choix de limiter le Dataset aux colonnes pertinentes, c’est-à-dire celles où les données manquantes sont peu nombreuses et permettront d’en tirer des analyses. A noter que certains noms de colonnes ont également été modifiés (afin d’en améliorer la lecture) et que les valeurs manquantes ont été remplacées par la médiane."
   "</p>"
   , unsafe_allow_html=True) 
 	
   st.dataframe(df_temp_catnat_1950.head())
+  "\n\n"
+  st.write("<p style='text-align: justify'>"
+  "Plusieurs Datasets de travail ont ensuite été créés pour l’analyse, reprenant le nombre de catastrophes naturelles par année ainsi que la variation de température, le nombre total de morts, le nombre total de personnes affectées, le coût chiffré en milliers de dollars US induit, le nombre de catastrophes naturelles."
+  "</p>"
+  "\n\n"
+  "Plusieurs dataset ont été créé spécialement pour les modèles de Machine Learning, dont un seul sera présenté ici. Pour ce faire, le choix a été fait de supprimer les catastrophes pour lesquelles le mois n’est pas renseigné (nous gardons tout de même 98,4% des données initialement présentes dans le fichier des catastrophes naturelles dans le monde depuis 1950). "
+  "</p>"
+  "\n\n"
+  "A noter que les valeurs manquantes ont été remplacées par des 0 (pas de catastrophe naturelle). Également, les lignes les plus récentes (2022 et 2023) ont été supprimées car il fallait que l’intégralité des informations soit disponible (température, nombre de catastrophes mensuelles, CO2 et population)."
+  "</p>"
+  "\n\n"
+  "Il contient par année, le mois, la variation de température, le nombre de catastrophes mensuelles, la population, les émissions de CO2 en millions de tonnes, le cumul des émissions de CO2 en millions de tonnes."
+  "</p>"
+  "\n\n"
+  "\n\n"
+   , unsafe_allow_html=True) 
 
-
-
+  st.subheader("CONCULSION")
+  st.write("<p style='text-align: justify'>"
+  "Les datasets nouvellement créés sont sauvegardés sur notre drive commun, dans un dossier intitulé “DATASETS_CLEAN”, pour être utilisés par tous dans des feuilles de code séparées (essentiellement la feuille “Code_Commun”, mais aussi des feuilles individuelles permettant à chacun de pratiquer et d’expérimenter de son côté)."
+  "\n\n"
+  "</p>"
+  , unsafe_allow_html=True) 
 
 
 
