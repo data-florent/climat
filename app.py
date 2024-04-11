@@ -22,6 +22,7 @@ df_nord_hem_mean_annuel= pd.read_csv('datasets/df_nord_hem_mean_annuel.csv', sep
 df_sud_hem_mean_annuel= pd.read_csv('datasets/df_sud_hem_mean_annuel.csv', sep=',')
 continent_df_OWID_CO_CLEAN= pd.read_csv('datasets/continent_df_OWID_CO_CLEAN.csv', sep=',')
 EUROPE_country_df_OWID_CO_CLEAN= pd.read_csv('datasets/EUROPE_country_df_OWID_CO_CLEAN.csv', sep=',')
+df_countryLatLong= pd.read_csv('datasets/df_countryLatLong.csv')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -124,23 +125,29 @@ if page == pages[1] :
   "\n\n"
   , unsafe_allow_html=True) 
 
-	
+  "</p>"
+  "\n\n"
 
-  st.subheader("Données OWID")
+  st.subheader("2. Données OWID")
   st.write("<p style='text-align: justify'>"
   "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. Les lignes ne contenant pas de code ISO sont des régions ou des continents par exemple. Le reste des données manquantes ont été remplacées par “0”."
-  "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
   "Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes."
   "</p>"
   , unsafe_allow_html=True) 
-	
-  st.dataframe(country_df_OWID_CO_CLEAN.head())
+  st.dataframe(country_df_OWID_CO_CLEAN.tail())
+  st.write("<p style='text-align: justify'>"
+  "Un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
+  "\n\n"
+  , unsafe_allow_html=True)    
+  st.dataframe(df_countryLatLong.csv)
+
+
 
   st.subheader("Données EMDAT")
   st.write("<p style='text-align: justify'>"
-  "Texte 1"
+  "Un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
   "</p>"
   "\n\n"
   "<p style='text-align: justify'>"
