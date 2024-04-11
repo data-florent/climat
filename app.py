@@ -153,14 +153,16 @@ if page == pages[1] :
   # remplacer les NAs
   df_OWID_CO_CLEAN = df_OWID_CO['iso_code'].fillna('AUTRE')
   df_OWID_CO_CLEAN = df_OWID_CO.fillna(0)
-  # Créer la nouvelle colonne 'temp_SUM' avec la somme des colonnes temperatures = equivaut à la colonne 'temperature_change_from_ghg'
-  df_OWID_CO_CLEAN['temp_SUM'] = df_OWID_CO_CLEAN[['temperature_change_from_ch4','temperature_change_from_co2','temperature_change_from_n2o']].sum(axis=1)
   ''', language='python')
 	
   st.write("<p style='text-align: justify'>"
   "Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes."
   "</p>"
   , unsafe_allow_html=True) 
+  st.code('''
+  # Créer la nouvelle colonne 'temp_SUM' avec la somme des colonnes temperatures = equivaut à la colonne 'temperature_change_from_ghg'
+  df_OWID_CO_CLEAN['temp_SUM'] = df_OWID_CO_CLEAN[['temperature_change_from_ch4','temperature_change_from_co2','temperature_change_from_n2o']].sum(axis=1)
+  ''', language='python')
 	
   st.dataframe(country_df_OWID_CO_CLEAN.head())
   st.write("<p style='text-align: justify'>"
