@@ -121,22 +121,16 @@ if page == pages[1] :
   "\n\n"
   , unsafe_allow_html=True) 
 
-st.code('''# supprimer les caractere speciaux ***, en les transformant en NaN
-df_global_mean.replace('***', np.nan, inplace=True)
-GLO_TempAno_AIRSv6.replace('*******', np.nan, inplace=True) # 2007-2016
-GLO_TempAno_AIRSv7.replace('*******', np.nan, inplace=True) # 2007-2016
-GLO_TempAno_GHCNv4ERSSTv5.replace('*******', np.nan, inplace=True)  # 2007-2016
+  st.code('''
+  # supprimer les caractere speciaux ***, en les transformant en NaN
+  df_global_mean.replace('***', np.nan, inplace=True)
+  
+  # Supprimez les lignes contenant NaN
+  df_global_mean.dropna(inplace=True)
 
-# Supprimez les lignes contenant NaN
-df_global_mean.dropna(inplace=True)
-GLO_TempAno_AIRSv6.dropna(inplace=True)
-GLO_TempAno_AIRSv7.dropna(inplace=True)
-GLO_TempAno_GHCNv4ERSSTv5.dropna(inplace=True)
-
-# transformer les colonnes object en float
-df_global_mean['Jan'] = df_global_mean['Jan'].astype(float)
-df_global_mean['Feb'] = df_global_mean['Feb'].astype(float)
-df_global_mean['Mar'] = df_global_mean['Mar'].astype(float)''', language='python')
+  # transformer les colonnes object en float
+  df_global_mean['Jan'] = df_global_mean['Jan'].astype(float)
+  ''', language='python')
 
 	   
   st.write("<p style='text-align: justify'>"
