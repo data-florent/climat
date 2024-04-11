@@ -206,11 +206,11 @@ if page == pages[1] :
   ''', language='python')
 # text
   st.write("<p style='text-align: justify'>"
-  "Plusieurs Datasets de travail ont ensuite été créés pour l’analyse, reprenant le nombre de catastrophes naturelles par année ainsi que la variation de température, le nombre total de morts, le nombre total de personnes affectées, le coût chiffré en milliers de dollars US induit, le nombre de catastrophes naturelles."
+  "Des Datasets de travail ont ensuite été créés pour l’analyse, reprenant le nombre de catastrophes naturelles par année ainsi que la variation de température, le nombre total de morts, le nombre total de personnes affectées, le coût chiffré en milliers de dollars US induit, le nombre de catastrophes naturelles."
   "</p>" , unsafe_allow_html=True) 
 # text
   st.write("<p style='text-align: justify'>"
-  "Plusieurs dataset ont été créé spécialement pour les modèles de Machine Learning, dont un seul sera présenté ici. Pour ce faire, le choix a été fait de supprimer les catastrophes pour lesquelles le mois n’est pas renseigné (nous gardons tout de même 98,4% des données initialement présentes dans le fichier des catastrophes naturelles dans le monde depuis 1950). "
+  "Pour les modèles de Machine Learning, plusieurs dataset ont spécialement été créé, dont un seul sera présenté ici. Pour ce faire, le choix a été fait de supprimer les catastrophes pour lesquelles le mois n’est pas renseigné (nous gardons tout de même 98,4% des données initialement présentes dans le fichier des catastrophes naturelles dans le monde depuis 1950). "
   "</p>", unsafe_allow_html=True) 
   "\n\n"
 # text
