@@ -146,7 +146,9 @@ if page == pages[1] :
   st.write("<p style='text-align: justify'>"
   "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. Les lignes ne contenant pas de code ISO sont des régions ou des continents par exemple. Le reste des données manquantes ont été remplacées par “0”."
   "</p>"
-  "\n\n")
+  "\n\n"  
+  , unsafe_allow_html=True) 
+	
   st.code('''
   # remplacer les NAs
   df_OWID_CO_CLEAN = df_OWID_CO['iso_code'].fillna('AUTRE')
