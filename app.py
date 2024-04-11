@@ -119,7 +119,27 @@ if page == pages[1] :
   "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux. les caractères spéciaux ont donc été remplacés par des NaN. Les lignes contenant des valeurs manquantes ont été supprimées et les colonnes de type « object » ont été transformées en « float ». A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets."
   "</p>"
   "\n\n"
-  "<p style='text-align: justify'>"
+  , unsafe_allow_html=True) 
+
+st.code('''# supprimer les caractere speciaux ***, en les transformant en NaN
+df_global_mean.replace('***', np.nan, inplace=True)
+GLO_TempAno_AIRSv6.replace('*******', np.nan, inplace=True) # 2007-2016
+GLO_TempAno_AIRSv7.replace('*******', np.nan, inplace=True) # 2007-2016
+GLO_TempAno_GHCNv4ERSSTv5.replace('*******', np.nan, inplace=True)  # 2007-2016
+
+# Supprimez les lignes contenant NaN
+df_global_mean.dropna(inplace=True)
+GLO_TempAno_AIRSv6.dropna(inplace=True)
+GLO_TempAno_AIRSv7.dropna(inplace=True)
+GLO_TempAno_GHCNv4ERSSTv5.dropna(inplace=True)
+
+# transformer les colonnes object en float
+df_global_mean['Jan'] = df_global_mean['Jan'].astype(float)
+df_global_mean['Feb'] = df_global_mean['Feb'].astype(float)
+df_global_mean['Mar'] = df_global_mean['Mar'].astype(float)''', language='python')
+
+	   
+  st.write("<p style='text-align: justify'>"
   "Une fois les données nettoyées, des datasets de travail ont ensuite été créés en fonction des relevé de température moyenne par mois, par saison, annuelle, saisonnières, par latitude, par hémisphère, par pays et des outils de mesures (AIRSv6, AIRSv7, GHCNv4ERSSTv5)."
   "</p>"
   "\n\n"
