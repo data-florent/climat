@@ -21,7 +21,7 @@ df_global_annuel= pd.read_csv('datasets/df_global_annuel.csv', sep=',')
 df_nord_hem_mean_annuel= pd.read_csv('datasets/df_nord_hem_mean_annuel.csv', sep=',')
 df_sud_hem_mean_annuel= pd.read_csv('datasets/df_sud_hem_mean_annuel.csv', sep=',')
 continent_df_OWID_CO_CLEAN= pd.read_csv('datasets/continent_df_OWID_CO_CLEAN.csv', sep=',')
-EUROPE_country_df_OWID_CO_CLEAN= pd.read_csv('datasets/EUROPE_country_df_OWID_CO_CLEAN.csv', sep=',')
+EUROPE_country_df_OWID_CO_CLEAN = pd.read_csv('datasets/EUROPE_country_df_OWID_CO_CLEAN.csv', sep=',')
 
 
 ### Header ###
