@@ -119,6 +119,7 @@ if page == pages[1] :
   "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux. les caractères spéciaux ont donc été remplacés par des NaN. Les lignes contenant des valeurs manquantes ont été supprimées et les colonnes de type « object » ont été transformées en « float ». A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets."
   "</p>"
   "\n\n"
+  "Par exemple:"
   , unsafe_allow_html=True) 
 
   st.code('''
