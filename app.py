@@ -315,8 +315,8 @@ if page == pages[2] :
     fig, ax = plt.subplots(figsize = (6,6))
     sns.heatmap(cor, annot = True, ax = ax, cmap = "coolwarm")
 #amelioration de la lisibilité
-    ax.set_xticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=0, ha='right')
-    ax.set_yticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=0, va='top')
+    ax.set_xticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=45, ha='right')
+    ax.set_yticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=0, va='center')
 #affiche
     st.pyplot(fig, use_container_width=True)
 
