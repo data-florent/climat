@@ -309,9 +309,15 @@ if page == pages[2] :
     st.markdown("<h3>Heatmap mettant en évidence les corrélations</h3>"
     , unsafe_allow_html=True)
 
+#calcule la matrice de correlation	  
     cor = country_df_OWID_CO_CLEAN[["temp_SUM",'co2',"primary_energy_consumption",'gdp','population']].corr()
-    fig, ax = plt.subplots(figsize = (10,10))
+#creation de la heatmap
+    fig, ax = plt.subplots(figsize = (8,8))
     sns.heatmap(cor, annot = True, ax = ax, cmap = "coolwarm")
+#amelioration de la lisibilité
+    ax.set_xticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'])
+    ax.set_yticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'])
+#affiche
     st.pyplot(fig, use_container_width=True)
 
     st.markdown(
