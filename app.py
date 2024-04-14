@@ -103,6 +103,7 @@ if page == pages[1] :
   "Après analyse des données fournies, une première étape de nettoyage a été indispensable pour exploiter les jeux de données."
   "</p>"
   "\n\n"
+  , unsafe_allow_html=True)
 # Nettoyage DONNEE NASA 
 #text
   st.subheader("1. Données de la NASA")
