@@ -175,8 +175,7 @@ if page == pages[1] :
   # Créer la nouvelle colonne 'temp_SUM' avec la somme des colonnes temperatures = equivaut à la colonne 'temperature_change_from_ghg'
   df_OWID_CO_CLEAN['temp_SUM'] = df_OWID_CO_CLEAN[['temperature_change_from_ch4','temperature_change_from_co2','temperature_change_from_n2o']].sum(axis=1)
   ''', language='python')
-# affichage du dataframe
-  st.dataframe(country_df_OWID_CO_CLEAN.head())
+
 #text
   st.write("<p style='text-align: justify'>"
   "Un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
@@ -186,8 +185,8 @@ if page == pages[1] :
   "</p>"
   "\n\n"
   , unsafe_allow_html=True)    
-# affichage du dataframe des latitudes et longitude
-  st.dataframe()
+# affichage du dataframe
+  st.dataframe(country_df_OWID_CO_CLEAN.head())
 
 
 ### Nettoyage DONNEES EMDAT
