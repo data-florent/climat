@@ -143,7 +143,6 @@ if page == pages[1] :
   , unsafe_allow_html=True) 
   "\n\n"
 
-
 	
 ### Nettoyage DONNEES OWID
   st.subheader("2. Données OWID")
@@ -243,6 +242,9 @@ if page == pages[1] :
 
 
 
+
+
+
 # Page Visualisations
 if page == pages[2] : 
   st.header("Visualisations")
@@ -309,6 +311,7 @@ if page == pages[2] :
     st.markdown("<h3>Heatmap mettant en évidence les corrélations</h3>"
     , unsafe_allow_html=True)
 
+# HEATMAP
 #calcule la matrice de correlation	  
     cor = country_df_OWID_CO_CLEAN[["temp_SUM",'co2',"primary_energy_consumption",'gdp','population']].corr()
 #creation de la heatmap
@@ -318,7 +321,6 @@ if page == pages[2] :
     ax.set_xticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=45, ha='right', color='white')
     ax.set_yticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=0, va='center', color='white')
     fig.patch.set_facecolor('black')
-    cbar = heatmap.collections[0].colorbar
     cbar.ax.yaxis.set_tick_params(color='white')
 #affiche
     st.pyplot(fig, use_container_width=True)
