@@ -112,9 +112,9 @@ if page == pages[1] :
   "</p>"
   "\n\n"
   , unsafe_allow_html=True)
-# affichage du dataframe
-  st.write("données brutes fournies par la NASA")
-  st.dataframe(DF_NASA_EXEMPLE.head(3))
+# affichage du dataframe ------- *******   NE FONCTIONNE PAS ***********
+  #st.write("données brutes fournies par la NASA")
+  #st.dataframe(DF_NASA_EXEMPLE.head(3))
 #text  
   st.write("<p style='text-align: justify'>"
   "Dans un premier temps, les Datasets de la NASA ont été divisé en plusieurs Datasets différents réparti en fonction de la temporalité et de la zone et des outils de mesures."
