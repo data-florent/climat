@@ -99,24 +99,30 @@ if page == pages[0] :
 # Page Nettoyage des données
 if page == pages[1] : 
   st.header("Nettoyage des données")
-	
+  st.write("<p style='text-align: justify'>"
+  "Après analyse des données fournies, une première étape de nettoyage a été indispensable pour exploiter les jeux de données."
+  "</p>"
+  "\n\n"
 # Nettoyage DONNEE NASA 
 #text
   st.subheader("1. Données de la NASA")
   st.write("<p style='text-align: justify'>"
-  "Après analyse des données fournies, une première étape de nettoyage a été indispensable pour exploiter le jeu de données."
+  "Les données fournies par la NASA viennent de relevés de températures globaux, de l’hémisphère nord et de l’hémisphère sud. Ils comportent les variations de températures entre 2007 et 2016, calculées avec trois outils de mesures différents."
   "</p>"
   "\n\n"
-  "<p style='text-align: justify'>"
-  "En effet, les données viennent de relevés de températures globaux, de l’hémisphère nord et de l’hémisphère sud. Ils comportent les variations de températures entre 2007 et 2016 calculées avec trois outils de mesures différents."
-  "</p>"
-  "\n\n"
-  "<p style='text-align: justify'>"
+  , unsafe_allow_html=True)
+# affichage du dataframe
+  st.write("données burtes")
+  st.dataframe(df_global_annuel.head(3))
+#text  
+  st.write("<p style='text-align: justify'>"
   "Dans un premier temps, les Datasets de la NASA ont été divisé en plusieurs Datasets différents réparti en fonction de la temporalité et de la zone et des outils de mesures."
   "</p>"
   , unsafe_allow_html=True)
 # affichage du dataframe
-  st.dataframe(df_global_annuel.head())
+  st.dataframe(df_global_annuel.head(3))
+  st.dataframe(df_nord_hem_mean_annuel.head(3))
+  st.dataframe(df_sud_hem_mean_annuel.head(3))
 #text
   st.write("<p style='text-align: justify'>"
   "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux. les caractères spéciaux ont donc été remplacés par des NaN. Les lignes contenant des valeurs manquantes ont été supprimées et les colonnes de type « object » ont été transformées en « float ». A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets."
@@ -376,7 +382,7 @@ if page == pages[2] :
     fig.update_layout(
         xaxis=dict(title='Année'),
         yaxis=dict(title='Évolution de la température '),
-        width=400,
+        width=600,
         height=600,
     )
     st.plotly_chart(fig, use_container_width=True)
