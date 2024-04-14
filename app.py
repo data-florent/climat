@@ -321,6 +321,7 @@ if page == pages[2] :
     ax.set_xticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=45, ha='right', color='white')
     ax.set_yticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=0, va='center', color='white')
     fig.patch.set_facecolor('black')
+    cbar = heatmap.collections[0].colorbar
     cbar.ax.yaxis.set_tick_params(color='white')
 #affiche
     st.pyplot(fig, use_container_width=True)
