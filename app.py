@@ -316,7 +316,7 @@ if page == pages[2] :
     cor = country_df_OWID_CO_CLEAN[["temp_SUM",'co2',"primary_energy_consumption",'gdp','population']].corr()
 #creation de la heatmap
     fig, ax = plt.subplots(figsize = (6,6))
-    sns.heatmap(cor, annot = True, ax = ax, cmap = "coolwarm")
+    sns.heatmap(cor, annot = True, ax = ax, cmap = "YlOrRd")
 #amelioration de la lisibilité
     ax.set_xticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=45, ha='right')
     ax.set_yticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=0, va='center')
