@@ -376,7 +376,7 @@ if page == pages[2] :
     fig.update_layout(
         xaxis=dict(title='Année'),
         yaxis=dict(title='Évolution de la température '),
-        width=600,
+        width=400,
         height=600,
     )
     st.plotly_chart(fig, use_container_width=True)
