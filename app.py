@@ -342,6 +342,7 @@ if page == pages[2] :
     st.markdown("<h3>2. Les différentes régions et l'évolution de la température</h3>"
     , unsafe_allow_html=True)
 
+# FIG VARIATION DE LA TEMPERTURE MOYENNE WORLD WIDE
     continent_df_OWID_CO_CLEAN = continent_df_OWID_CO_CLEAN[continent_df_OWID_CO_CLEAN['regions'] != 'World']
     fig = px.line(continent_df_OWID_CO_CLEAN,
         x='year',
@@ -364,6 +365,7 @@ if page == pages[2] :
     "</p>"
     , unsafe_allow_html=True)
 
+# FIG VARIATION DE LA TEMPERTURE MOYENNE EUROPE
     fig = px.line(EUROPE_country_df_OWID_CO_CLEAN,
         x='year',
         y='temp_SUM',
@@ -374,7 +376,7 @@ if page == pages[2] :
     fig.update_layout(
         xaxis=dict(title='Année'),
         yaxis=dict(title='Évolution de la température '),
-        width=800,
+        width=600,
         height=600,
     )
     st.plotly_chart(fig, use_container_width=True)
