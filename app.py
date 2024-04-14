@@ -320,8 +320,10 @@ if page == pages[2] :
 #amelioration de la lisibilité
     ax.set_xticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=45, ha='right', color='white')
     ax.set_yticklabels(['Variation de Température', 'CO2', 'Consommation énergie', 'PIB', 'Population'], rotation=0, va='center', color='white')
-    fig.patch.set_facecolor('black')
-
+    fig.patch.set_facecolor('#f0f0f0')
+    sns.color_palette("coolwarm")
+    cbar = plt.colorbar(heatmap.collections[0])
+    cbar.ax.yaxis.set_tick_params(color='white')
 #affiche
     st.pyplot(fig, use_container_width=True)
 
