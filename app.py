@@ -388,7 +388,7 @@ if page == pages[2] :
                         color_continuous_scale=custom_color_scale,
                         hover_name='country', projection='natural earth', animation_frame='year',
                         title='Variation de la température due aux gaz à effet de serre')
-    fig.update_layout(width=1000, height=550)
+    fig.update_layout(width=1100, height=550)
     fig.update_coloraxes(colorbar_title='Variation de la Temperature')
     fig.update_layout(updatemenus=[dict(type='buttons', showactive=False,
                                       buttons=[dict(label='Play',
