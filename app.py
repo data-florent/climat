@@ -22,7 +22,7 @@ df_nord_hem_mean_annuel= pd.read_csv('datasets/df_nord_hem_mean_annuel.csv', sep
 df_sud_hem_mean_annuel= pd.read_csv('datasets/df_sud_hem_mean_annuel.csv', sep=',')
 continent_df_OWID_CO_CLEAN= pd.read_csv('datasets/continent_df_OWID_CO_CLEAN.csv', sep=',')
 EUROPE_country_df_OWID_CO_CLEAN = pd.read_csv('datasets/EUROPE_country_df_OWID_CO_CLEAN.csv', sep=',')
-
+DF_NASA_EXEMPLE = pd.read_csv('datasets/GLB.Ts+dSST (2)', sep=',')
 
 ### Header ###
 st.image('images/iceberg.jpg', use_column_width=True)
@@ -112,8 +112,8 @@ if page == pages[1] :
   "\n\n"
   , unsafe_allow_html=True)
 # affichage du dataframe
-  st.write("données burtes")
-  st.dataframe(df_global_annuel.head(3))
+  st.write("données brutes fournies par la NASA")
+  st.dataframe(DF_NASA_EXEMPLE.head(3))
 #text  
   st.write("<p style='text-align: justify'>"
   "Dans un premier temps, les Datasets de la NASA ont été divisé en plusieurs Datasets différents réparti en fonction de la temporalité et de la zone et des outils de mesures."
