@@ -126,7 +126,10 @@ if page == pages[1] :
   #st.dataframe(df_sud_hem_mean_annuel.head(3))
 #text
   st.write("<p style='text-align: justify'>"
-  "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux. les caractères spéciaux ont donc été remplacés par des NaN. Les lignes contenant des valeurs manquantes ont été supprimées et les colonnes de type « object » ont été transformées en « float ». A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets."
+  "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux."
+  "<li>les caractères spéciaux ont donc été remplacés par des NaN. <\li>"\n
+  "<li>Les lignes contenant des valeurs manquantes ont été supprimées et <\li>"
+  "<li>les colonnes de type « object » ont été transformées en « float ». A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets.<\li>"
   "</p>"
   "\n\n"
   "Par exemple:"
