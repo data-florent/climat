@@ -130,6 +130,7 @@ if page == pages[1] :
   "<li>les caractères spéciaux ont donc été remplacés par des NaN. "
   "<li>Les lignes contenant des valeurs manquantes ont été supprimées "
   "<li>les colonnes de type « object » ont été transformées en « float » "
+  "</p>"
   "A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets."
   "</p>"
   "\n\n"
