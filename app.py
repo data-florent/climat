@@ -169,6 +169,8 @@ if page == pages[1] :
   "</p>"
   "\n\n"  
   , unsafe_allow_html=True) 
+  st.write("Exemple:"
+  , unsafe_allow_html=True) 
 # affichage du code
   st.code('''
   # remplacer les NAs
