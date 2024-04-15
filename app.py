@@ -132,7 +132,8 @@ if page == pages[1] :
   "<li>les colonnes de type « object » ont été transformées en « float » "
   "</p>"
   "\n\n"
-  "A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets."
+  , unsafe_allow_html=True) 
+  st.write("A noter que ces étapes de nettoyage ont été dupliquées sur l’ensemble des datasets."
   "</p>"
   "\n\n"
   "Par exemple:"
