@@ -117,12 +117,12 @@ if page == pages[1] :
   #st.dataframe(DF_NASA_EXEMPLE.head(3))
 #text  
   st.write("<p style='text-align: justify'>"
-  "Dans un premier temps, les Datasets de la NASA ont été divisé en plusieurs Datasets différents réparti en fonction de la temporalité et de la zone et des outils de mesures."
+  "Dans un premier temps, l'ensemble de données de la NASA a été divisé en plusieurs Datasets différents réparti en fonction de la temporalité et de la zone et des outils de mesures."
   "</p>"
   , unsafe_allow_html=True)
 # affichage du dataframe
-  st.dataframe(df_global_annuel.head(3))
-  #st.dataframe(df_nord_hem_mean_annuel.head(3))
+  #st.dataframe(df_global_annuel.head(3))
+  st.dataframe(df_nord_hem_mean_annuel.head(3))
   #st.dataframe(df_sud_hem_mean_annuel.head(3))
 #text
   st.write("<p style='text-align: justify'>"
