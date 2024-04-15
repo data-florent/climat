@@ -128,8 +128,8 @@ if page == pages[1] :
   st.write("<p style='text-align: justify'>"
   "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux."
   "<li>les caractères spéciaux ont donc été remplacés par des NaN. "
-  "<li>Les lignes contenant des valeurs manquantes ont été supprimées "
-  "<li>les colonnes de type « object » ont été transformées en « float » "
+  "<li>Les lignes contenant des valeurs manquantes ont été supprimées. "
+  "<li>les colonnes de type « object » ont été transformées en « float ». "
   "</p>"
   "\n\n"
   , unsafe_allow_html=True) 
@@ -151,7 +151,7 @@ if page == pages[1] :
   ''', language='python')
 #text  
   st.write("<p style='text-align: justify'>"
-  "Une fois les données nettoyées, des datasets de travail ont ensuite été créés en fonction des relevé de température moyenne par mois, par saison, annuelle, saisonnières, par latitude, par hémisphère, par pays et des outils de mesures (AIRSv6, AIRSv7, GHCNv4ERSSTv5)."
+  "Une fois les données nettoyées, des ensembles de données de travail ont ensuite été créés en fonction des relevés de température moyenne mensuelle, annuelle, saisonnière, par latitude, par hémisphère, par pays et des instruments de mesure (AIRSv6, AIRSv7, GHCNv4ERSSTv5)."
   "</p>"
   "\n\n"
   , unsafe_allow_html=True) 
@@ -162,7 +162,10 @@ if page == pages[1] :
   st.subheader("2. Données OWID")
 #text
   st.write("<p style='text-align: justify'>"
-  "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. Les lignes ne contenant pas de code ISO sont des régions ou des continents par exemple. Le reste des données manquantes ont été remplacées par “0”."
+  "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec:"
+  "<li>le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. "
+  "<li>Les lignes ne contenant pas de code ISO sont des régions ou des continents par exemple. "
+  "<li>Le reste des données manquantes ont finalement été remplacées par “0”."
   "</p>"
   "\n\n"  
   , unsafe_allow_html=True) 
