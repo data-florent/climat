@@ -122,9 +122,7 @@ if page == pages[1] :
   "</p>"
   , unsafe_allow_html=True)
 # affichage du dataframe
-  #st.dataframe(df_global_annuel.head(3))
-  st.dataframe(df_nord_hem_mean_annuel.head(3))
-  #st.dataframe(df_sud_hem_mean_annuel.head(3))
+  st.dataframe(DF_NASA_EXEMPLE.head(3))
 #text
   st.write("<p style='text-align: justify'>"
   "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux."
