@@ -163,14 +163,12 @@ if page == pages[1] :
 #text
   st.write("<p style='text-align: justify'>"
   "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec:"
-  "<li>le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. "
-  "<li>Les lignes ne contenant pas de code ISO sont des régions ou des continents par exemple. "
-  "<li>Le reste des données manquantes ont finalement été remplacées par “0”."
+  "<li>le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. (Les lignes ne contenant pas de code ISO correspondent à des régions ou des continents) "
+  "<li>Le reste des données manquantes ont été remplacées par “0”."
   "</p>"
   "\n\n"  
   , unsafe_allow_html=True) 
-  st.write("Exemple:"
-  , unsafe_allow_html=True) 
+
 # affichage du code
   st.code('''
   # remplacer les NAs
@@ -179,7 +177,7 @@ if page == pages[1] :
   ''', language='python')
 #text	
   st.write("<p style='text-align: justify'>"
-  "Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes."
+  "<li>Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. (A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes.)"
   "</p>"
   , unsafe_allow_html=True) 
 # affichage du code
