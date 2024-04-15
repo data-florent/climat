@@ -177,7 +177,9 @@ if page == pages[1] :
   ''', language='python')
 #text	
   st.write("<p style='text-align: justify'>"
-  "<li>Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée. (A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes.)"
+  "<li>Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée."
+  "\n\n"
+  "(A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes.)"
   "</p>"
   , unsafe_allow_html=True) 
 # affichage du code
