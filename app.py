@@ -261,8 +261,6 @@ if page == pages[1] :
 
 # Page Visualisations
 # Liste des pages
-pages = ["Accueil", "Données", "Visualisations"]
-page = st.sidebar.radio("Navigation", pages)
 
 if page == pages[2] : 
   st.header("Visualisations")
@@ -436,10 +434,7 @@ if page == pages[2] :
     "</p>"
     , unsafe_allow_html=True)
 
-# Bouton pour passer à la page suivante
-    if page == "Accueil":
-	    if st.button("Page suivante >"):
-		    st.session_state['current_page'] = pages.index("Données")
+     dataviz_page = st.radio("", (viz1, viz2, viz3))
 
 
 
