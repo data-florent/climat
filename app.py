@@ -526,7 +526,7 @@ if page == pages[2] :
                     range_color=[0,15], # permet de garder la même échelle pour toutes les années
                     hover_name='country', projection='natural earth', animation_frame='year',
                     title='Part (en %) de contribution au réchauffement climatique, basée sur les émissions de GES')
-    fig.update_coloraxes(colorbar_title='Part de variation de température due aux GES')
+    fig.update_coloraxes(colorbar_title='Part de variation de \n température due aux GES')
     fig.update_layout(width=1100, height=520)
     st.plotly_chart(fig, use_container_width=True)
 
