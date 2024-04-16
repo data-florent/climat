@@ -260,6 +260,10 @@ if page == pages[1] :
 
 
 # Page Visualisations
+# Liste des pages
+pages = ["Accueil", "Données", "Visualisations"]
+page = st.sidebar.radio("Navigation", pages)
+
 if page == pages[2] : 
   st.header("Visualisations")
   viz1 = "Evolutions du climat"
@@ -431,18 +435,15 @@ if page == pages[2] :
     "Cette représentation graphique permet de voir les variations de température à l’échelle mondiale par année depuis 1851. A noter que les résultats viennent confirmer les données constatées dans les précédentes courbes."
     "</p>"
     , unsafe_allow_html=True)
-# Menu de navigation
-    menu = ["Page 2", "Page 3"]
-    choice = st.sidebar.selectbox("Choisir une page", menu)
-# Afficher la page sélectionnée
-    if choice == "Page 2":
-	    viz2()
-    if choice == "Page 3":
-	    viz3()
-    else:
-	    viz1()
 
-  # Sous-page Rôle des activités humaines
+# Bouton pour passer à la page suivante
+    if page == "Accueil":
+	    if st.button("Page suivante >"):
+		    st.session_state['current_page'] = pages.index("Données")
+
+
+
+# Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
     st.subheader("Rôle des activités humaines")
     
