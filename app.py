@@ -113,9 +113,6 @@ if page == pages[1] :
   "</p>"
   "\n\n"
   , unsafe_allow_html=True)
-# affichage du dataframe ------- *******   NE FONCTIONNE PAS ***********
-  #st.write("données brutes fournies par la NASA")
-  #st.dataframe(DF_NASA_EXEMPLE.head(3))
 #text  
   st.write("<p style='text-align: justify'>"
   "Dans un premier temps, l'ensemble de données de la NASA a été divisé en plusieurs Datasets différents réparti en fonction de la temporalité et de la zone et des outils de mesures."
@@ -518,8 +515,10 @@ if page == pages[2] :
     st.markdown("<h3>3. Contribution des pays au réchauffement climatique</h3>"
     , unsafe_allow_html=True)
 
+# figure map
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
+    
     fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
                     locationmode='country names', locations='country',
                     color='share_of_temperature_change_from_ghg',
@@ -527,6 +526,8 @@ if page == pages[2] :
                     range_color=[0,15], # permet de garder la même échelle pour toutes les années
                     hover_name='country', projection='natural earth', animation_frame='year',
                     title='Part (en %) de contribution au réchauffement climatique, basée sur les émissions de GES')
+    fig.update_coloraxes(colorbar_title='GES par habitant')
+    fig.update_layout(width=1100, height=520)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown(
