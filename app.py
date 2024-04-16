@@ -434,7 +434,7 @@ if page == pages[2] :
     "</p>"
     , unsafe_allow_html=True)
 
-
+  dataviz_page = st.radio("", (viz1, viz2, viz3))
 
 # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
