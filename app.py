@@ -526,7 +526,7 @@ if page == pages[2] :
                     range_color=[0,15], # permet de garder la même échelle pour toutes les années
                     hover_name='country', projection='natural earth', animation_frame='year',
                     title='Part (en %) de contribution au réchauffement climatique, basée sur les émissions de GES')
-    fig.update_coloraxes(colorbar_title='GES par habitant')
+   
     fig.update_layout(width=1100, height=520)
     st.plotly_chart(fig, use_container_width=True)
 
@@ -555,6 +555,8 @@ if page == pages[2] :
                     range_color=[0,25], # permet de garder la même échelle pour toutes les années
                     hover_name='country', projection='natural earth', animation_frame='year',
                     title='Emissions de GES par individu selon les pays')
+    fig.update_coloraxes(colorbar_title='GES par habitant')
+    fig.update_layout(width=1100, height=520)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown(
