@@ -431,6 +431,16 @@ if page == pages[2] :
     "Cette représentation graphique permet de voir les variations de température à l’échelle mondiale par année depuis 1851. A noter que les résultats viennent confirmer les données constatées dans les précédentes courbes."
     "</p>"
     , unsafe_allow_html=True)
+# Menu de navigation
+    menu = ["Page 2", "Page 3"]
+    choice = st.sidebar.selectbox("Choisir une page", menu)
+# Afficher la page sélectionnée
+    if choice == "Page 2":
+	    viz2()
+    if choice == "Page 3":
+	    viz3()
+    else:
+	    viz1()
 
   # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
@@ -526,7 +536,7 @@ if page == pages[2] :
                     range_color=[0,15], # permet de garder la même échelle pour toutes les années
                     hover_name='country', projection='natural earth', animation_frame='year',
                     title='Part (en %) de contribution au réchauffement climatique, basée sur les émissions de GES')
-    fig.update_coloraxes(colorbar_title='variation due aux GES')
+    fig.update_coloraxes(colorbar_title='Variation due aux GES')
     fig.update_layout(width=1100, height=520)
     st.plotly_chart(fig, use_container_width=True)
 
