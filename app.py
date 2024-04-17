@@ -466,9 +466,9 @@ if page == pages[2] :
 	                                                  args=[[None], dict(frame=dict(duration=0, redraw=True), mode='immediate', transition=dict(duration=0))])])])
 	
 	# Placer le graphique dans un conteneur dans la colonne principale
-      graph_container = st.container()
-      with graph_container:
-	      st.plotly_chart(fig, use_container_width=True)
+     graph_container = st.container()
+     with graph_container:
+	     st.plotly_chart(fig, use_container_width=True)
 
 
 
