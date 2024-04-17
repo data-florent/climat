@@ -449,15 +449,15 @@ if page == pages[2] :
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year'] >= 1851]
     custom_color_scale = ["#60a35a", "#FFA500", "#c72222"]
     fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
-	                    locationmode='ISO-3', locations='iso_code',
-	                    color='temp_SUM',
-	                    range_color=[0, 0.1],
-	                    color_continuous_scale=custom_color_scale,
-	                    hover_name='country', projection='natural earth', animation_frame='year',
-	                    title='Variation de la température due aux gaz à effet de serre')
-     fig.update_layout(width=1100, height=520)
-     fig.update_coloraxes(colorbar_title='Variation de la Temperature')
-     fig.update_layout(updatemenus=[dict(type='buttons', showactive=False,
+			locationmode='ISO-3', locations='iso_code',
+			color='temp_SUM',
+			range_color=[0, 0.1],
+			color_continuous_scale=custom_color_scale,
+			hover_name='country', projection='natural earth', animation_frame='year',
+			title='Variation de la température due aux gaz à effet de serre')
+    fig.update_layout(width=1100, height=520)
+    fig.update_coloraxes(colorbar_title='Variation de la Temperature')
+    fig.update_layout(updatemenus=[dict(type='buttons', showactive=False,
 	                                    buttons=[dict(label='Play',
 	                                                  method='animate',
 	                                                  args=[None, dict(frame=dict(duration=30, redraw=True), fromcurrent=True)]),
