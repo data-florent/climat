@@ -411,6 +411,7 @@ if page == pages[2] :
     "</p>"
    , unsafe_allow_html=True)
 
+# map
     st.sidebar.title('Options')
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
@@ -431,7 +432,9 @@ if page == pages[2] :
                                               dict(label='Pause',
                                                     method='animate',
                                                     args=[[None], dict(frame=dict(duration=0, redraw=True), mode='immediate', transition=dict(duration=0))])])])
-    st.plotly_chart(fig, use_container_width=True)
+    graph_container = st.container()
+    with graph_container:
+	    st.plotly_chart(fig, use_container_width=True)
 
     st.markdown(
     "<p style='text-align: justify'>"
