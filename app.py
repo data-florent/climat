@@ -442,7 +442,40 @@ if page == pages[2] :
     "</p>"
     , unsafe_allow_html=True)
 
-    
+    # Créer la barre latérale
+    st.sidebar.title('Options')
+
+     # Ajouter des options à la barre latérale si nécessaire
+
+     # Charger les données et créer le graphique
+     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
+     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year'] >= 1851]
+     custom_color_scale = ["#60a35a", "#FFA500", "#c72222"]
+     fig = px.choropleth(sorted_country_df_OWID_CO_CLEAN,
+	                    locationmode='ISO-3', locations='iso_code',
+	                    color='temp_SUM',
+	                    range_color=[0, 0.1],
+	                    color_continuous_scale=custom_color_scale,
+	                    hover_name='country', projection='natural earth', animation_frame='year',
+	                    title='Variation de la température due aux gaz à effet de serre')
+      fig.update_layout(width=1100, height=520)
+      fig.update_coloraxes(colorbar_title='Variation de la Temperature')
+      fig.update_layout(updatemenus=[dict(type='buttons', showactive=False,
+	                                    buttons=[dict(label='Play',
+	                                                  method='animate',
+	                                                  args=[None, dict(frame=dict(duration=30, redraw=True), fromcurrent=True)]),
+	                                            dict(label='Pause',
+	                                                  method='animate',
+	                                                  args=[[None], dict(frame=dict(duration=0, redraw=True), mode='immediate', transition=dict(duration=0))])])])
+	
+	# Placer le graphique dans un conteneur dans la colonne principale
+	graph_container = st.container()
+	with graph_container:
+	    st.plotly_chart(fig, use_container_width=True)
+
+
+
+
 
 # Sous-page Rôle des activités humaines
   if dataviz_page == viz2:
