@@ -411,6 +411,7 @@ if page == pages[2] :
     "</p>"
    , unsafe_allow_html=True)
 
+    st.sidebar.title('Options')
     sorted_country_df_OWID_CO_CLEAN = country_df_OWID_CO_CLEAN.sort_values(by=['year'], ascending=True)
     sorted_country_df_OWID_CO_CLEAN = sorted_country_df_OWID_CO_CLEAN.loc[sorted_country_df_OWID_CO_CLEAN['year']>=1851]
     custom_color_scale = ["#60a35a", "#FFA500", "#c72222"]
