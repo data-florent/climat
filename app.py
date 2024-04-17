@@ -91,7 +91,8 @@ if page == pages[0] :
   "<li>MachineLearning.ipynb"
   "</p>"
   "\n\n"
-  "<p style='text-align: justify'>"
+  , unsafe_allow_html=True)
+  st.write("<p style='text-align: justify'>"
   "Nous avons utilisé le langage informatique <strong>Python</strong> et plusieurs librairies associées : <strong>Pandas</strong> et <strong>Numpy</strong> pour le traitement des données ; <strong>Matplotlib, Seaborn</strong> et <strong>Plotly</strong> pour la visualisation ; <strong>Scikit-Learn</strong> et <strong>Prophet</strong> pour le machine learning."
   "</p>"
   , unsafe_allow_html=True)
