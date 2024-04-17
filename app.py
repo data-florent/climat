@@ -167,15 +167,14 @@ if page == pages[1] :
 
 # affichage du code
   st.code('''
-  # Trier le DataFrame par année etre sur que les valeures sont dans l'ordre croissant
-  df = df.sort_values(by='year')
-  # Remplir les valeurs nulles dans la colonne 'population' avec la valeur de la cellule du dessus
-  df['population'] = df['population'].replace(0, method='ffill')
-  
-  # remplacer les NAs
+   # remplacer les NAs
   df_OWID_CO_CLEAN = df_OWID_CO['iso_code'].fillna('AUTRE')
   df_OWID_CO_CLEAN = df_OWID_CO.fillna(0)
   
+  # Trier le DataFrame par année etre sur que les valeures sont dans l'ordre croissant
+  df = df.sort_values(by='year')
+  # Remplir les valeurs nulles dans la colonne 'population' avec la valeur de la cellule du dessus
+  df['population'] = df['population'].replace(0, method='ffill')  
   ''', language='python')
 #text	
   st.write("<p style='text-align: justify'>"
