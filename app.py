@@ -165,25 +165,16 @@ if page == pages[1] :
   "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec:"
   "<li>le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. (Les lignes ne contenant pas de code ISO correspondent à des régions ou des continents) "
   "<li>Le reste des données manquantes ont été remplacées par “0”."
+  "<li>Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée."
   "</p>"
   "\n\n"  
   , unsafe_allow_html=True) 
-
+  
 # affichage du code
   st.code('''
-   # remplacer les NAs
+  # remplacer les NAs
   df_OWID_CO_CLEAN = df_OWID_CO['iso_code'].fillna('AUTRE')
   df_OWID_CO_CLEAN = df_OWID_CO.fillna(0)
-  ''', language='python')
-#text	
-  st.write("<p style='text-align: justify'>"
-  "<li>Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée."
-  "\n\n"
-  "(A noter que les valeurs semblent correspondre à celles de la colonne « temperature_change_from_ghg », déjà présente dans le Dataset initial, mais sans certitude, nous avons préféré la créer par nous-mêmes.)"
-  "</p>"
-  , unsafe_allow_html=True) 
-# affichage du code
-  st.code('''
   # Créer la nouvelle colonne 'temp_SUM' avec la somme des colonnes temperatures = equivaut à la colonne 'temperature_change_from_ghg'
   df_OWID_CO_CLEAN['temp_SUM'] = df_OWID_CO_CLEAN[['temperature_change_from_ch4','temperature_change_from_co2','temperature_change_from_n2o']].sum(axis=1)
   ''', language='python')
