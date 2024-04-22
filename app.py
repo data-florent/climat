@@ -41,10 +41,10 @@ pages=["Présentation du projet", "Nettoyage des données", "Visualisations", "P
 page=st.sidebar.radio("",pages)
 st.sidebar.info(
 "Auteurs du projet :"
-" [Laura](https://www.linkedin.com/), "
-"[Marion](https://www.linkedin.com/), "
-"[Florent](https://www.linkedin.com/), "
-"[Romain](https://www.linkedin.com/)"
+" [Laura Desreumaux](https://www.linkedin.com/), "
+"[Marion Depéry](https://www.linkedin.com/), "
+"[Florent Vaisson](https://www.linkedin.com/), "
+"[Romain Delacour](https://www.linkedin.com/)"
 "\n\n"
 "Projet réalisé dans le cadre de la formation [DataScientest](https://datascientest.com/) de Data Analyst, promotion Septembre 2023 - Avril 2024"
 "\n\n"
