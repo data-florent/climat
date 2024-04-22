@@ -190,9 +190,6 @@ if page == pages[1] :
 
 #text
   st.write("<p style='text-align: justify'>"
-  "Un nouveau Dataset contenant les latitudes et les longitudes des pays a été ajouté. Ce dernier a fait l’objet d’un nettoyage des données avec suppression des valeurs manquantes et des colonnes inutiles."
-  "</p>"
-  "\n\n"
   "Les lignes ont ensuite été filtrées par pays, par régions, par continents, par régions économiques et à l’échelle mondiale via la colonne « country » et stockées dans de nouveaux Datasets de travail."
   "</p>"
   "\n\n"
