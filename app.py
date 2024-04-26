@@ -151,7 +151,7 @@ if page == pages[1] :
   ''', language='python')
 #text  
   st.write("<p style='text-align: justify'>"
-  "Une fois les données nettoyées, des ensembles de données de travail ont ensuite été créés en fonction des relevés de température moyenne mensuelle, annuelle, saisonnière, par hémisphère, par pays et des instruments de mesure (AIRSv6, AIRSv7, GHCNv4ERSSTv5)."
+  "Une fois les données nettoyées, des ensembles de données de travail ont ensuite été créés en fonction des relevés de température moyenne mensuelle, annuelle, saisonnière, par hémisphère et des instruments de mesure (AIRSv6, AIRSv7, GHCNv4ERSSTv5)."
   "</p>"
   "\n\n"
   , unsafe_allow_html=True) 
