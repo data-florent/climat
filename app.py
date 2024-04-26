@@ -209,6 +209,13 @@ if page == pages[1] :
   # LIMITATION du dataframe aux colonnes pertinentes, celles où les données manquantes sont peu nombreuses ET permettront des analyses
   df_EMDAT_CLEAN = df_emdat[["Disaster Group", "Disaster Subgroup", "Disaster Type", "Disaster Subtype", "ISO", "Country", "Subregion", "Region", "Start Year", "Total Deaths", "Total Affected", "Total Damage ('000 US$)"]]
   ''', language='python')
+	# affichage du code
+  st.code('''
+  # Changement du nom de la colonne 'Start Year' en 'Year'
+  df_EMDAT_CLEAN = df_EMDAT_CLEAN.rename({'Start Year':'Year'}, axis=1)
+  # CHOIX DE LA MEDIANE POUR REMPLACER LES VALEURS MANQUANTES DANS LES 3 VARIABLES TOTAL AFFECTED, TOTAL DEATHS ET TOTAL DAMAGE
+  df_EMDAT_CLEAN = df_EMDAT_CLEAN.fillna(df_EMDAT_CLEAN.median())
+  ''', language='python')
 # text
   st.write("<p style='text-align: justify'>"
   "Des Datasets de travail ont ensuite été créés pour l’analyse, reprenant le nombre de catastrophes naturelles par année ainsi que la variation de température, le nombre total de morts, le nombre total de personnes affectées, le coût chiffré en milliers de dollars US induit, le nombre de catastrophes naturelles."
@@ -223,13 +230,7 @@ if page == pages[1] :
   "A noter que les valeurs manquantes ont été remplacées par des 0 (pas de catastrophe naturelle). Également, les lignes les plus récentes (2022 et 2023) ont été supprimées car il fallait que l’intégralité des informations soit disponible (température, nombre de catastrophes mensuelles, CO2 et population)."
   "</p>", unsafe_allow_html=True) 
   "\n\n"
-# affichage du code
-  st.code('''
-  # Changement du nom de la colonne 'Start Year' en 'Year'
-  df_EMDAT_CLEAN = df_EMDAT_CLEAN.rename({'Start Year':'Year'}, axis=1)
-  # CHOIX DE LA MEDIANE POUR REMPLACER LES VALEURS MANQUANTES DANS LES 3 VARIABLES TOTAL AFFECTED, TOTAL DEATHS ET TOTAL DAMAGE
-  df_EMDAT_CLEAN = df_EMDAT_CLEAN.fillna(df_EMDAT_CLEAN.median())
-  ''', language='python')
+
 # text
   st.write("<p style='text-align: justify'>"
   "Il contient par année, le mois, la variation de température, le nombre de catastrophes mensuelles, la population, les émissions de CO2 en millions de tonnes, le cumul des émissions de CO2 en millions de tonnes."
