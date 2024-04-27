@@ -41,10 +41,10 @@ pages=["Présentation du projet", "Nettoyage des données", "Visualisations", "P
 page=st.sidebar.radio("",pages)
 st.sidebar.info(
 "Auteurs du projet :"
-" [Laura Desreumaux](https://www.linkedin.com/), "
-"[Marion Depéry](https://www.linkedin.com/), "
-"[Florent Vaisson](https://www.linkedin.com/), "
-"[Romain Delacour](https://www.linkedin.com/)"
+" [Laura Desreumaux](https://www.linkedin.com/in/laura-desreumaux/), "
+"[Marion Depéry](https://www.linkedin.com/in/marion-dep%C3%A9ry-68838115/), "
+"[Florent Vaisson](https://www.linkedin.com/in/florent-vaisson/), "
+"[Romain Delacour](https://www.linkedin.com/in/romain-delacour-030786291/)"
 "\n\n"
 "Projet réalisé dans le cadre de la formation [DataScientest](https://datascientest.com/) de Data Analyst, promotion Septembre 2023 - Avril 2024"
 "\n\n"
@@ -119,7 +119,7 @@ if page == pages[1] :
   , unsafe_allow_html=True)
 #text  
   st.write("<p style='text-align: justify'>"
-  "Dans un premier temps, l'ensemble de données de la NASA a été divisé en plusieurs Datasets différents réparti en fonction de la temporalité et de la zone et des outils de mesures."
+  "Dans un premier temps, l'ensemble de données de la NASA a été divisé en plusieurs Datasets différents répartis en fonction de la temporalité et de la zone et des outils de mesure."
   "</p>"
   , unsafe_allow_html=True)
 # affichage du dataframe
@@ -127,9 +127,9 @@ if page == pages[1] :
 #text
   st.write("<p style='text-align: justify'>"
   "Après exploration des données à disposition avec diverses fonctions, nous avons pu constater que les Datasets contenaient peu de doublons, mais qu’ils contenaient des valeurs manquantes et beaucoup de caractères spéciaux."
-  "<li>les caractères spéciaux ont donc été remplacés par des NaN. "
+  "<li>Les caractères spéciaux ont donc été remplacés par des NaN. "
   "<li>Les lignes contenant des valeurs manquantes ont été supprimées. "
-  "<li>les colonnes de type « object » ont été transformées en « float ». "
+  "<li>Les colonnes de type « object » ont été transformées en « float ». "
   "</p>"
   "\n\n"
   , unsafe_allow_html=True) 
@@ -140,10 +140,10 @@ if page == pages[1] :
   , unsafe_allow_html=True) 
 # affichage du code
   st.code('''
-  # supprimer les caractere speciaux ***, en les transformant en NaN
+  # supprimer les caractères speciaux ***, en les transformant en NaN
   df_global_mean.replace('***', np.nan, inplace=True)
 
-  # Supprimez les lignes contenant NaN
+  # supprimer les lignes contenant NaN
   df_global_mean.dropna(inplace=True)
 
   # transformer les colonnes object en float
@@ -162,7 +162,7 @@ if page == pages[1] :
   st.subheader("2. Données OWID")
 #text
   st.write("<p style='text-align: justify'>"
-  "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec:"
+  "Le Dataset OWID a également été importé puis a fait l’objet, comme précédemment, d’une analyse de données ainsi que d’un processus de nettoyage avec :"
   "<li>le remplacement des valeurs manquantes de la colonne iso_Code par “Autre”. (Les lignes ne contenant pas de code ISO correspondent à des régions ou des continents) "
   "<li>Le reste des données manquantes ont été remplacées par “0”."
   "<li>Une nouvelle colonne qui reprend la somme des colonnes températures « temp_SUM » a été créée."
@@ -175,7 +175,7 @@ if page == pages[1] :
   # remplacer les NAs
   df_OWID_CO_CLEAN = df_OWID_CO['iso_code'].fillna('AUTRE')
   df_OWID_CO_CLEAN = df_OWID_CO.fillna(0)
-  # Créer la nouvelle colonne 'temp_SUM' avec la somme des colonnes temperatures = equivaut à la colonne 'temperature_change_from_ghg'
+  # créer la nouvelle colonne 'temp_SUM' avec la somme des colonnes temperatures = équivaut à la colonne 'temperature_change_from_ghg'
   df_OWID_CO_CLEAN['temp_SUM'] = df_OWID_CO_CLEAN[['temperature_change_from_ch4','temperature_change_from_co2','temperature_change_from_n2o']].sum(axis=1)
   ''', language='python')
 
@@ -213,7 +213,7 @@ if page == pages[1] :
   st.code('''
   # Changement du nom de la colonne 'Start Year' en 'Year'
   df_EMDAT_CLEAN = df_EMDAT_CLEAN.rename({'Start Year':'Year'}, axis=1)
-  # CHOIX DE LA MEDIANE POUR REMPLACER LES VALEURS MANQUANTES DANS LES 3 VARIABLES TOTAL AFFECTED, TOTAL DEATHS ET TOTAL DAMAGE
+  # Choix de la médiane pour remplacer les valeurs manquantes dans les 3 variables TOTAL AFFECTED, TOTAL DEATHS et TOTAL DAMAGE
   df_EMDAT_CLEAN = df_EMDAT_CLEAN.fillna(df_EMDAT_CLEAN.median())
   ''', language='python')
 # text
@@ -222,7 +222,7 @@ if page == pages[1] :
   "</p>" , unsafe_allow_html=True) 
 # text
   st.write("<p style='text-align: justify'>"
-  "Pour les modèles de Machine Learning, plusieurs dataset ont spécialement été créé, dont un seul sera présenté ici. Pour ce faire, le choix a été fait de supprimer les catastrophes pour lesquelles le mois n’est pas renseigné (nous gardons tout de même 98,4% des données initialement présentes dans le fichier des catastrophes naturelles dans le monde depuis 1950). "
+  "Pour les modèles de Machine Learning, plusieurs datasets ont spécialement été créés, dont un seul sera présenté ici. Pour ce faire, le choix a été fait de supprimer les catastrophes pour lesquelles le mois n’est pas renseigné (nous gardons tout de même 98,4% des données initialement présentes dans le fichier des catastrophes naturelles dans le monde depuis 1950). "
   "</p>", unsafe_allow_html=True) 
   "\n\n"
 # text
