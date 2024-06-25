@@ -4,3 +4,4 @@ seaborn
 scipy
 joblib
 prophet==1.1.5
+numpy=1.26.4
